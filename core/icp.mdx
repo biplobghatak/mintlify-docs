@@ -1,0 +1,98 @@
+---
+title: "Ideal Customer Profile (ICP)"
+description: "Configure your ICP to make Outpulse's intent scoring accurate and relevant to your business."
+sidebarTitle: "ICP"
+---
+
+Your ICP (Ideal Customer Profile) is the foundation of everything Outpulse does. It's used by the AI to determine whether a post is from someone who could be a customer — and how strongly they're signaling buying intent.
+
+The more specific your ICP, the higher quality your signals will be.
+
+## Setting up your ICP
+
+You configure your ICP during onboarding and can update it at any time from **Settings → ICP**.
+
+[IMAGE: Screenshot of the ICP settings form with all fields visible]
+
+## Fields
+
+### Product name and description
+
+Write a clear, plain-language description of what your product does and who it's for.
+
+**Good example:**
+> "Outpulse is an X outreach tool for SaaS founders and growth marketers who want to find potential customers on X and reply to them at scale."
+
+**Avoid vague descriptions:**
+> "A marketing tool for businesses."
+
+The AI uses this description to judge whether a post author is someone who would buy your product.
+
+### Target industries
+
+List the industries your best customers work in. Examples: SaaS, E-commerce, Marketing agencies, Fintech, Healthcare.
+
+Be specific where you can. "SaaS" is more useful than "Technology."
+
+### Target job titles
+
+List the job titles of people who typically buy or champion your product. Examples: Founder, Head of Growth, Marketing Manager, VP Sales, CTO.
+
+The AI performs fuzzy matching, so you don't need to list every variation.
+
+### Pain points
+
+List the problems your product solves — written as your customer would describe them, not as feature names.
+
+**Good:**
+> "spending too much time manually searching for leads on X"
+> "missing conversations where people ask for product recommendations"
+
+**Avoid:**
+> "lacking a go-to-market automation solution"
+
+### Keywords
+
+Keywords are terms your ICP would use when they have the problem you solve. These supplement your monitor query — the AI uses them as context when scoring, not for search.
+
+Examples: "recommend a tool for", "looking for a way to", "anyone tried", "switched from [competitor]"
+
+### Competitor names and handles
+
+Enter your competitors' product names and X handles. This enables competitor monitoring (replies to their posts) and helps the AI score posts where someone is evaluating alternatives.
+
+### Follower range
+
+Set a minimum and maximum follower count for authors. This filters out bot accounts (too low) and accounts that are unlikely to be buying (depending on your ICP).
+
+Leave blank to apply no filter.
+
+### Language
+
+Select the languages you want to engage in. Outpulse only surfaces signals in your selected languages.
+
+### Verified accounts only
+
+Toggle this on to only surface posts from X-verified accounts (blue check). Useful if your ICP tends to be established professionals or brands.
+
+---
+
+## How ICP affects scoring
+
+When a post matches a monitor, the AI evaluates it against your ICP across several dimensions:
+
+- Does the author's bio and account match your target job titles and industries?
+- Is the post discussing a pain point you solve?
+- Does the context suggest buying intent or just general interest?
+
+The final intent score (1–10) combines these signals. Posts that strongly match your ICP will score higher — they'll surface in your inbox more reliably.
+
+<Tip>
+  After your first week, review the signals you've been skipping. If high-scoring signals aren't relevant, tighten your ICP description or raise your intent threshold on those monitors.
+</Tip>
+
+---
+
+## Updating your ICP
+
+Go to **Settings → ICP** to update any field. Changes take effect on the next scan cycle — they don't retroactively re-score existing signals.

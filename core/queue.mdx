@@ -1,0 +1,89 @@
+---
+title: "Queue"
+description: "Track and manage posts before and after they go out — pending, posted, and failed actions."
+---
+
+The queue is where approved drafts wait to be posted. It shows you exactly what's scheduled, what's been posted, and what failed — with full control to approve, reject, or retry.
+
+[IMAGE: Screenshot of the Queue page showing the three tabs: Pending, Posted, Failed]
+
+## Queue tabs
+
+### Pending
+
+Actions waiting to be posted. Each entry shows:
+
+- The draft text
+- The signal it originated from
+- The X account it will post from
+- The action type (reply, DM)
+- Estimated post time
+
+From pending, you can:
+- **Approve** — confirm the action should post (applies to manual mode)
+- **Reject** — remove the action from the queue without posting
+
+### Posted
+
+Successfully sent actions. Each entry shows the posted text, timestamp, and — after 24 hours — engagement metrics: impressions, likes, replies, retweets, bookmarks.
+
+Use this tab to review what went out and evaluate the quality of your outreach.
+
+### Failed
+
+Actions that couldn't be posted due to an error. Common reasons:
+
+| Reason | What to do |
+|--------|-----------|
+| Rate limit exceeded | Retry after a few hours |
+| X API error | Check your connected account is still authorized |
+| Daily cap reached | Action will auto-retry the next posting window |
+| Account paused | Resume the connected account in Settings |
+
+Click **Retry** to attempt the action again.
+
+---
+
+## How posting works
+
+When a draft is approved, Outpulse doesn't post it immediately. It goes through the following steps:
+
+1. **Queue** — added to pending
+2. **Schedule check** — waits until within your posting hours (e.g. Mon–Fri, 9am–6pm)
+3. **Daily cap check** — verifies the daily limit for this action type hasn't been hit
+4. **Similarity check** — ensures the draft isn't too similar to a recently sent post
+5. **Human-like delay** — waits 45–90 seconds (+ random jitter) before firing
+6. **Post to X** — sent via Twitter API v2
+7. **Charge credits** — 2 credits deducted on success
+
+If any check fails, the action is either deferred or failed.
+
+---
+
+## Similarity check
+
+Before posting, Outpulse compares the draft against your recent posts. If the content is too similar to something sent recently, the action is held and flagged for review.
+
+This prevents accidental repetition — sending the same message to multiple people, or closely repeating a phrase you've used recently.
+
+---
+
+## Posting schedule
+
+The queue respects your schedule settings. If a draft is approved at 11pm on a Friday and your schedule is Mon–Fri 9am–6pm, it will post on Monday morning.
+
+→ [Configure your posting schedule](/settings/schedule)
+
+---
+
+## Daily caps
+
+Outpulse enforces per-account daily caps on:
+
+- Replies
+- DMs
+- Total posts
+
+When a cap is reached, remaining queued actions are deferred to the next day. Caps reset at midnight in your configured timezone.
+
+The caps are designed to keep activity within X's acceptable use thresholds and protect your account's health. They are not configurable — they're set based on account age and follower count (warm-up mode applies to new accounts).

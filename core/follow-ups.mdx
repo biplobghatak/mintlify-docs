@@ -1,0 +1,65 @@
+---
+title: "Follow-ups"
+description: "Outpulse automatically checks whether your outreach got a response and prompts you to follow up when needed."
+---
+
+Not every reply gets a response on the first contact. Outpulse automatically monitors your sent replies and DMs and alerts you when 48 hours have passed without a response — so no warm lead goes cold without a follow-up.
+
+## How the follow-up system works
+
+1. A reply or DM is sent through Outpulse
+2. After 48 hours, Outpulse checks whether the recipient responded
+3. If they responded: the signal is marked as **responded** in People
+4. If they didn't respond: the signal is flagged as **pending follow-up**
+5. Outpulse prompts you to generate a follow-up message
+
+This check runs automatically. You don't need to configure anything.
+
+---
+
+## Follow-up statuses
+
+Each sent action moves through these statuses:
+
+| Status | Meaning |
+|--------|---------|
+| `pending_check` | Sent, waiting for the 48-hour check |
+| `pending_followup` | 48 hours passed, no response — follow-up recommended |
+| `followed_up` | You sent a follow-up |
+| `converted` | The person responded or converted |
+| `no_followup` | You decided not to follow up |
+
+---
+
+## Generating a follow-up
+
+When a signal is in `pending_followup` status, you'll see a **Follow up** prompt on:
+
+- The signal in your inbox
+- The contact record in People
+
+Click **Generate follow-up** to create a follow-up draft. The AI knows the context of the original message and generates something that picks up the thread naturally — not a generic "just checking in."
+
+Generating a follow-up draft costs **1 credit**. Posting it costs **2 credits**.
+
+---
+
+## Marking no follow-up
+
+If you decide not to follow up with someone (e.g. not the right fit, conversation already concluded elsewhere), click **No follow-up** to close the loop. The signal moves to `no_followup` and won't appear in your pending follow-ups list again.
+
+---
+
+## Viewing pending follow-ups
+
+From the **Inbox**, filter by **Pending follow-up** to see all contacts waiting for a follow-up. This makes it easy to batch your follow-up work once per day.
+
+[IMAGE: Screenshot of the inbox follow-up filter showing pending follow-up signals]
+
+---
+
+## Follow-up best practices
+
+- **One follow-up is usually enough** — more than that risks being marked as spam
+- **Add new value in the follow-up** — don't just repeat the first message; share something relevant or ask a different question
+- **Timing matters** — following up 2–3 business days after the first message performs better than same-day or same-week follow-ups

@@ -1,0 +1,53 @@
+---
+title: "Connected accounts"
+description: "Manage the X accounts connected to your workspace."
+---
+
+The Connected accounts page (**Settings → Connected accounts**) is where you manage which X accounts Outpulse can post from.
+
+Each connected account is scoped to the current workspace. The same X account can be connected in multiple workspaces independently.
+
+## Adding an account
+
+1. Go to **Settings → Connected accounts**
+2. Click **Connect new account**
+3. You'll be redirected to X's OAuth page — authorize Outpulse
+4. You'll be redirected back and the account will appear in the list
+
+[IMAGE: Screenshot of the Connected accounts page showing a connected account with status and action buttons]
+
+## Account status
+
+| Status | Meaning |
+|--------|---------|
+| **Active** | Connected and posting normally |
+| **Paused** | Connected but posting stopped |
+| **Error** | Authorization issue — needs reconnection |
+
+If an account shows an error status, disconnect it and reconnect via OAuth. The most common cause is an expired or revoked token.
+
+## Pausing an account
+
+Pausing stops all posting from the account without disconnecting it. Monitors continue scanning and scoring — no signals are lost. Drafts accumulate in the queue as pending but won't be posted until you resume.
+
+To pause: click **Pause** next to the account.
+
+## Resuming an account
+
+Click **Resume** to restart posting. Queued actions will begin processing on the next posting window.
+
+## Disconnecting an account
+
+Disconnecting removes the account from Outpulse and deletes its stored tokens. Any monitors tied to this account will be paused automatically.
+
+<Warning>
+  Disconnecting does not revoke the OAuth authorization on X's side. To fully revoke: go to **X Settings → Security and account access → Connected apps** and remove Outpulse there.
+</Warning>
+
+## Your profile
+
+Your user profile (**Settings → Profile**) controls your display name, email address, and profile picture shown within Outpulse. This is separate from your connected X account profile.
+
+To update your email, enter the new address and verify it via the confirmation link sent to the new email.
+
+To change your password, click **Change password** and follow the prompts.

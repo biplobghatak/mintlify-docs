@@ -1,0 +1,118 @@
+---
+title: "Monitors"
+description: "Create and manage monitors to define what Outpulse searches for on X."
+---
+
+A monitor is a saved search rule. Each monitor runs every 20 minutes and feeds matching posts into the scoring pipeline. High-intent posts become signals in your inbox.
+
+You can create unlimited monitors per workspace.
+
+## Monitor types
+
+### Keyword monitor
+
+Searches X for posts containing your query string. Use this for conversational phrases people use when they have a pain point.
+
+**Good keyword queries:**
+- `"recommend a tool for scheduling social media"`
+- `"looking for a CRM alternative"`
+- `"anyone tried" invoicing software`
+- `"tired of" AND "spreadsheet"`
+
+**Tips:**
+- Wrap phrases in quotes for exact-match
+- Use `AND`/`OR` for boolean logic
+- Be specific — broad queries produce more noise and cost more credits
+
+### Hashtag monitor
+
+Searches posts with a specific hashtag. Best for communities that use consistent hashtags, like `#buildinpublic`, `#IndieHackers`, or `#SaaSFounder`.
+
+### Competitor account monitor
+
+Watches for posts that mention or reply to a specific competitor's X account. Surfaces people who are frustrated with, comparing, or switching away from a competitor — high-intent by definition.
+
+Enter the competitor's X handle (e.g. `@competitorapp`).
+
+### Account monitor
+
+Watches a specific X account for new posts. Useful for tracking a potential customer, a key industry voice, or a prospect you've been watching.
+
+---
+
+## Creating a monitor
+
+1. Go to **Monitors** in the sidebar
+2. Click **New monitor**
+3. Choose a monitor type
+4. Fill in the query and settings (see below)
+5. Click **Save**
+
+The first scan runs within 20 minutes of creation.
+
+[IMAGE: Screenshot of the New Monitor form showing all fields]
+
+---
+
+## Monitor settings
+
+### Name
+
+A label for your own reference. Doesn't affect scanning.
+
+### Query
+
+The search term, phrase, hashtag, or handle. See monitor types above for guidance.
+
+### Automation mode
+
+Controls what happens after a signal is found. You can set different modes per monitor.
+
+| Mode | Behavior |
+|------|----------|
+| **Manual** | Signals wait in inbox. You generate drafts and approve them. |
+| **Smart auto** | Drafts generated automatically. AI decides which are safe to post. Rest stay in inbox for review. |
+| **Full auto** | All drafts generated and posted without your approval. |
+
+→ [Posting modes in detail](/core/posting-modes)
+
+### Intent threshold
+
+The minimum intent score (1–10) a post must reach to become a signal. Posts scoring below this are discarded.
+
+**Default: 7**
+
+- Lower threshold (e.g. 5) = more signals, more noise
+- Higher threshold (e.g. 8–9) = fewer signals, higher quality
+
+Adjust based on the signal-to-noise ratio you're seeing after the first few days.
+
+### Scan interval
+
+How often the monitor runs. Default is every 20 minutes. You can increase this (less frequent) to reduce credit usage on lower-priority monitors.
+
+---
+
+## Editing a monitor
+
+Click on any monitor from the Monitors page to edit its settings. Changes take effect on the next scan.
+
+## Pausing a monitor
+
+Pausing stops scanning without deleting the monitor or its history. Use this when you want to temporarily stop a monitor without losing your settings.
+
+## Deleting a monitor
+
+Deleting removes the monitor and its associated signals permanently. This cannot be undone.
+
+<Warning>
+  Deleting a monitor also removes its signals from your inbox. If you want to stop scanning without losing history, pause the monitor instead.
+</Warning>
+
+---
+
+## Monitor performance
+
+Each monitor shows a signal count — the total number of signals found since creation. Use this to evaluate which monitors are producing results vs. which need query refinement.
+
+[IMAGE: Screenshot of the Monitors list showing signal count per monitor]
