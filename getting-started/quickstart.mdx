@@ -27,7 +27,11 @@ You can create additional workspaces later for separate products or X accounts.
 
 ## 3. Connect your X account
 
-Outpulse needs access to your X account to post replies and send DMs on your behalf.
+Outpulse needs access to your X account to send DMs and post on your behalf.
+
+<Warning>
+  **X Premium is required.** X only delivers DMs from non-Premium accounts into a recipient's hidden "Message Requests" folder. With X Premium, your DMs land in the prospect's primary inbox with a push notification. This is a platform requirement — Outpulse cannot work without it.
+</Warning>
 
 <Steps>
   <Step title="Click 'Connect X account'">
@@ -42,7 +46,7 @@ Outpulse needs access to your X account to post replies and send DMs on your beh
 </Steps>
 
 <Info>
-  You can connect multiple X accounts later from **Settings → Connected accounts**. Each account can be assigned to a workspace independently.
+  You can connect multiple X accounts later from **Settings → Connected accounts**. Each account can be assigned to a workspace independently. Account limits depend on your plan: Solo = 1, Growth = 3, Agency = 10.
 </Info>
 
 ## 4. Set up your ICP
@@ -72,14 +76,22 @@ Paste 3–5 of your own posts from X. Outpulse uses these to learn your writing 
 
 ## 6. Create your first monitor
 
-A monitor is a saved search that Outpulse runs every 20 minutes. You can set up:
+A monitor is a saved search that Outpulse runs every 20 minutes. You can either pick a **signal template** (recommended for your first monitor) or build a custom query.
 
+**Signal templates:**
+- **Complaint / buying intent** — people actively seeking alternatives to a tool
+- **Trigger event** — funding announcements, new hires, product launches
+- **Competitor mention** — frustrated users or comparison threads around a specific competitor
+- **Topic authority** — domain experts in your problem space
+- **Problem post** — posts describing the pain point your product solves
+
+**Custom query types:**
 - **Keyword monitor** — e.g. `"looking for CRM tool"` or `"recommend project management software"`
 - **Hashtag monitor** — e.g. `#buildinpublic`
-- **Competitor account** — monitor replies to a competitor's posts
+- **Competitor account** — monitor posts mentioning a competitor's X account
 - **Account monitor** — watch a specific account for new posts
 
-Set the **intent threshold** to 7 (default). Posts scored below this won't appear in your inbox.
+Set the **intent threshold** to 7 (default). Posts scored below this won't be actioned.
 
 → [Full monitors guide](/core/monitors)
 
@@ -91,20 +103,18 @@ Each signal shows:
 - The original post
 - The author's profile and follower count
 - The intent score (1–10) and reason for the ICP match
-- Action buttons: generate draft, skip, or mark outcome
+- Action buttons: Generate DM, Skip
 
-[IMAGE: Screenshot of the Inbox showing a signal card with intent score, author info, and action buttons]
-
-→ [How to work the inbox](/core/inbox)
+→ [How to work the outbound tracker](/core/inbox)
 
 ## You're set up
 
 From here, your typical daily flow is:
 
-1. Check the inbox for new signals
-2. Generate and approve drafts
-3. Review the queue before posts go out
-4. Track people who respond in the People tab
+1. Review new signals and generate DM drafts
+2. Approve drafts to the queue
+3. Check the **Outbound Tracker** (Inbox) for sent DMs and update pipeline status
+4. Open "View Chat on X" to check for replies and follow up natively
 
 <Card title="Next: How Outpulse works" icon="circle-info" href="/getting-started/how-it-works">
   Learn the core concepts behind monitors, signals, and credits.

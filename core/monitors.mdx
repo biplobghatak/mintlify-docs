@@ -3,9 +3,25 @@ title: "Monitors"
 description: "Create and manage monitors to define what Outpulse searches for on X."
 ---
 
-A monitor is a saved search rule. Each monitor runs every 20 minutes and feeds matching posts into the scoring pipeline. High-intent posts become signals in your inbox.
+A monitor is a saved search rule. Each monitor runs every 20 minutes and feeds matching posts into the scoring pipeline. High-intent posts become signals ready for outreach.
 
 You can create unlimited monitors per workspace.
+
+## Signal templates
+
+The fastest way to create a monitor is to use a **signal template** — a pre-built, high-precision monitor tuned for a specific outreach intent. Outpulse ships with five templates:
+
+| Template | What it finds |
+|----------|--------------|
+| **Complaint / buying intent** | Posts expressing frustration with a tool or actively asking for alternatives |
+| **Trigger event** | Posts signalling a business event (new funding, new hire, product launch) that makes someone a timely prospect |
+| **Competitor mention** | Posts mentioning a direct competitor — frustrated users, comparison threads, or switching conversations |
+| **Topic authority** | Posts where the author demonstrates deep expertise in your problem space — ideal for thought-leadership outreach |
+| **Problem post** | Posts describing a pain point your product solves, even without naming a tool |
+
+Each template uses strict boolean queries plus an author-bio prefilter before any AI scoring runs — filtering out noise before it costs you anything.
+
+Select a template when creating a new monitor and fill in the template variables (e.g. your competitor's handle, your product category). You can also create a monitor from scratch using a custom query.
 
 ## Monitor types
 

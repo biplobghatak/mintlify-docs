@@ -16,7 +16,7 @@ Actions waiting to be posted. Each entry shows:
 - The draft text
 - The signal it originated from
 - The X account it will post from
-- The action type (reply, DM)
+- The action type (DM only or Reply+DM)
 - Estimated post time
 
 From pending, you can:
@@ -50,11 +50,11 @@ When a draft is approved, Outpulse doesn't post it immediately. It goes through 
 
 1. **Queue** — added to pending
 2. **Schedule check** — waits until within your posting hours (e.g. Mon–Fri, 9am–6pm)
-3. **Daily cap check** — verifies the daily limit for this action type hasn't been hit
-4. **Similarity check** — ensures the draft isn't too similar to a recently sent post
-5. **Human-like delay** — waits 45–90 seconds (+ random jitter) before firing
-6. **Post to X** — sent via Twitter API v2
-7. **Charge credits** — 2 credits deducted on success
+3. **Daily cap check** — verifies the daily DM limit for this account hasn't been hit
+4. **Similarity check** — ensures the draft isn't too similar to a recently sent message
+5. **Human-like delay** — waits before firing to mimic human behaviour
+6. **Send to X** — ping reply fired (best-effort) if Reply+DM mode is selected, then DM sent via Twitter API v2
+7. **Charge credits** — 2 credits (DM only) or 5 credits (Reply+DM) deducted on success
 
 If any check fails, the action is either deferred or failed.
 
@@ -80,9 +80,8 @@ The queue respects your schedule settings. If a draft is approved at 11pm on a F
 
 Outpulse enforces per-account daily caps on:
 
-- Replies
-- DMs
-- Total posts
+- DMs per account
+- Total posts per account
 
 When a cap is reached, remaining queued actions are deferred to the next day. Caps reset at midnight in your configured timezone.
 

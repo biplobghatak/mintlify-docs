@@ -9,22 +9,29 @@ Every billable action in Outpulse has a fixed credit cost. Here's the full break
 
 | Action | Credits | When it's charged |
 |--------|---------|-------------------|
-| **Lead found** | 2 | When a post passes your ICP check and intent threshold, becoming a signal in your inbox |
-| **Generate draft** | 1 | When you generate a reply or DM draft for a signal |
-| **Publish reply or DM** | 2 | When a post is successfully sent to X |
-| **Regenerate draft** | 1 | When you regenerate a draft after rejecting the previous one |
+| **Send DM only** | 2 | When a DM is successfully delivered to X |
+| **Send Reply + DM (ping combo)** | 5 | When Outpulse fires a public "Just sent you a DM!" ping reply and then sends the personalized DM |
 
 ## Free actions
 
 These actions are always free:
 
 - Running monitors (scanning X every 20 minutes)
-- Viewing signals in the inbox
+- Intent scoring and ICP filtering
+- Bio prefiltering (Step A signal quality check)
+- Generating AI drafts
+- Regenerating or editing drafts
+- Viewing signals, the outbound tracker, people, and analytics
 - Filtering, sorting, and searching
-- Skipping signals
-- Viewing people and analytics
-- Browsing the queue
 - Updating pipeline stages and notes
 - Changing settings
+
+## Reply + DM vs DM only
+
+The **Reply + DM** combo (5 credits) sends a short public reply to the prospect's post first — "Just sent you a DM!" — before delivering the personalized DM. This triggers an X push notification that a raw DM alone often doesn't, lifting open rates significantly. It counts as a single billable action.
+
+**DM only** (2 credits) skips the public ping and sends only the private DM. Use this on monitors where you prefer not to leave a public trail.
+
+The outreach mode is configured per monitor.
 
 → [Buy credits](/credits/buying-credits)

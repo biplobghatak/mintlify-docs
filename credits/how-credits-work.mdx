@@ -1,45 +1,62 @@
 ---
 title: "How credits work"
-description: "Outpulse uses a pay-as-you-go credit system. You only pay for the actions that use compute or API calls."
+description: "Outpulse runs on a monthly subscription with a fixed credit refill. Top-up packs let you add extra credits that never expire."
 ---
 
-Outpulse doesn't have monthly subscription plans. You buy credits upfront and spend them as you use the product. Credits never expire.
+Outpulse uses a **subscription + top-up** model. Every plan includes a monthly credit refill. If you need more mid-cycle, you can buy a top-up pack.
 
 ## What are credits?
 
-Credits are the unit of usage in Outpulse. Every action that requires compute or an API call costs a fixed number of credits. Browsing the inbox, filtering, viewing analytics, and managing settings are all free.
-
-You're charged only for the valuable actions:
+Credits are the unit of usage in Outpulse. Every action that requires a post to X costs a fixed number of credits. Scanning, intent scoring, and AI draft generation are all free — you only pay when a DM (or DM + ping combo) is actually sent.
 
 | Action | Cost |
 |--------|------|
-| Lead found (signal meets ICP and intent threshold) | 2 credits |
-| Generate 1 draft (reply or DM) | 1 credit |
-| Publish 1 reply or DM to X | 2 credits |
-| Regenerate a rejected draft | 1 credit |
+| **Send DM only** | 2 credits |
+| **Send Reply + DM (ping combo)** | 5 credits |
 
 → [Full credit cost breakdown](/credits/credit-costs)
 
-## Scanning is free
+## Free actions
 
-Outpulse runs your monitors every 20 minutes — that scanning is not charged. You're only charged when a post passes your ICP and intent threshold and becomes a signal (a "lead found").
+These are always free, regardless of plan:
 
-This means you can run many monitors without accumulating costs from posts that don't match your criteria.
+- Running monitors (scanning X every 20 minutes)
+- Intent scoring and ICP filtering
+- Generating and regenerating AI drafts
+- Viewing the inbox, signals, analytics
+- Filtering, sorting, and searching
+- Managing pipeline stages and notes
 
-## Credits never expire
+## Two credit buckets
 
-Credits you purchase don't have an expiry date. Buy a bundle now and use it at your own pace — whether that's over two weeks or six months.
+Your balance is split into two buckets:
+
+| Bucket | Source | Behaviour |
+|--------|--------|-----------|
+| **Subscription credits** | Monthly plan refill | Reset to your plan's monthly allowance at the start of every billing cycle |
+| **Rollover credits** | Top-up pack purchases | Never expire — carry forward indefinitely |
+
+When Outpulse deducts credits, it drains your **subscription bucket first**, then falls back to rollover credits. This means your rollover credits act as a permanent safety net and are never wasted by a monthly reset.
+
+## Monthly refill
+
+At the start of each billing cycle, your subscription bucket is reset to your plan's monthly credit allowance. Any unused subscription credits from the previous month do not carry over — only rollover (top-up) credits persist.
+
+| Plan | Monthly credits |
+|------|----------------|
+| Solo | 1,000 |
+| Growth | 4,000 |
+| Agency | 12,000 |
 
 ## Checking your balance
 
 Your current credit balance appears in the top navigation bar of the dashboard. Click it to go to the Credits page and see:
 
-- Current balance
+- Current balance (subscription + rollover)
 - Usage breakdown by action type
-- Today's spend
-- Full credit ledger (every debit and purchase)
+- Full credit ledger (every debit and refill)
 
-[IMAGE: Screenshot of the Credits page showing the balance, today's usage, and the ledger]
+[IMAGE: Screenshot of the Credits page showing the balance breakdown and ledger]
 
 ## Credits are per account, not per workspace
 

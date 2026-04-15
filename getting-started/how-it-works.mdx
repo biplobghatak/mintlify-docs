@@ -19,21 +19,21 @@ Outpulse runs every active monitor every 20 minutes. A single workspace can have
 
 A signal is a post that matched a monitor *and* passed the intent threshold. Not every matching post becomes a signal — Outpulse scores each one first.
 
-Signals appear in your **Inbox** with an intent score (1–10), the author's profile, and the reason it matched your ICP. Signals with a score below your threshold are discarded silently.
+Signals appear with an intent score (1–10), the author's profile, and the reason it matched your ICP. Signals with a score below your threshold are discarded silently. High-scoring signals are queued for DM outreach.
 
-→ [Working the inbox](/core/inbox)
+→ [Outbound Tracker](/core/inbox)
 
 ### Draft
 
-A draft is an AI-generated reply or DM for a signal. When you click "Generate reply" or "Generate DM" on a signal, Outpulse sends the post, your ICP, and your tone profile to Claude. The result is a draft in your writing style, ready to approve or edit.
+A draft is an AI-generated DM for a signal. When you click "Generate DM" on a signal, Outpulse sends the post, your ICP, and your tone profile to Claude. The result is a draft in your writing style, ready to approve or edit.
 
-You can generate two variants at once for comparison, or regenerate with feedback if the first draft misses the mark.
+You can regenerate with feedback if the first draft misses the mark. Draft generation is free — you're only charged when the DM is sent.
 
 → [Drafts and AI writing](/core/drafts)
 
 ### Queue
 
-Approved drafts go into the posting queue. Outpulse doesn't post instantly — it waits a human-like delay (45–90 seconds), applies your schedule constraints (e.g. only post Mon–Fri, 9am–6pm), and enforces daily posting caps per action type.
+Approved drafts go into the posting queue. Outpulse doesn't send instantly — it waits a human-like delay, applies your schedule constraints (e.g. only post Mon–Fri, 9am–6pm), and enforces daily DM caps per account.
 
 The queue shows pending, posted, and failed actions so you always know what's happening.
 
@@ -41,7 +41,7 @@ The queue shows pending, posted, and failed actions so you always know what's ha
 
 ### Credit
 
-Credits are the unit of usage. Outpulse charges credits for the actions that cost compute or API calls — finding leads, generating drafts, and posting to X. Credits never expire and you pay only for what you use.
+Credits are the unit of usage. Outpulse only charges credits when a DM (or DM + ping combo) is sent — scanning, scoring, and draft generation are all free. Your monthly plan refills your credit bucket each billing cycle, and top-up packs add rollover credits that never expire.
 
 → [How credits work](/credits/how-credits-work)
 
@@ -61,21 +61,22 @@ Every 20 minutes per active monitor:
   Score each post for intent 1–10 (Claude)
        ↓
   Score ≥ threshold?
-     Yes → Save as Signal, charge 2 credits
+     Yes → Save as Signal
      No  → Discard
        ↓
   Automation mode?
-     Manual     → Signal waits in inbox for your action
-     Smart auto → AI generates draft and decides whether to post
+     Manual     → Signal waits for your action
+     Smart auto → AI generates draft and decides whether to send
      Full auto  → Draft generated and queued immediately
        ↓
   Posting queue
-     Human-like delay (45–90s)
+     Human-like delay
      Schedule constraints (hours, days, timezone)
-     Daily caps enforced
+     Daily DM caps enforced
        ↓
-  Post to X via Twitter API v2
-  Charge 2 credits per successful post
+  Send to X via Twitter API v2
+  Ping reply fired (best-effort) if Reply+DM mode selected
+  Charge 2 credits (DM only) or 5 credits (Reply+DM) on success
 ```
 
 ---
@@ -98,9 +99,9 @@ Each monitor has its own automation mode. You can run different monitors at diff
 
 Outpulse is built to protect your X account from being flagged or banned.
 
-- **Human-like delays** between every action (45–90s + random jitter)
-- **Daily hard caps** on replies, DMs, and tweets
-- **Content similarity check** before every post — never sends duplicate messages
+- **Human-like delays** between every action
+- **Configurable daily DM caps** per connected X account
+- **Content similarity check** before every send — never sends duplicate messages
 - **Warm-up mode** for new or small accounts — starts with lower caps that increase gradually
 - **Rate limiting** per connected X account
 

@@ -9,11 +9,11 @@ Each monitor in Outpulse has its own posting mode. You can run different monitor
 
 ### Manual
 
-All signals require your involvement. Outpulse surfaces signals in your inbox but doesn't generate drafts or post anything automatically.
+All signals require your involvement. Outpulse surfaces signals but doesn't generate drafts or send DMs automatically.
 
 Your workflow:
-1. Signal appears in inbox
-2. You click "Generate reply" or "Generate DM"
+1. Signal appears (via your monitor)
+2. You click **Generate DM**
 3. You review the draft
 4. You approve it to send to queue
 
@@ -24,11 +24,11 @@ Your workflow:
 
 ### Smart auto
 
-Outpulse generates drafts automatically for every qualifying signal. The AI then evaluates each draft and decides whether it's high enough quality to post without your review. Drafts that don't meet the bar stay in your inbox for manual approval.
+Outpulse generates DM drafts automatically for every qualifying signal. The AI then evaluates each draft and decides whether it's high enough quality to send without your review. Drafts that don't meet the bar stay for manual approval.
 
 Your workflow:
-1. High-quality signals: draft generated and posted automatically
-2. Lower-confidence signals: draft appears in inbox for your review
+1. High-quality signals: draft generated and DM sent automatically
+2. Lower-confidence signals: draft appears for your review
 
 **Best for:**
 - Established accounts with a well-tuned tone profile
@@ -37,11 +37,11 @@ Your workflow:
 
 ### Full auto
 
-Every qualifying signal gets a draft generated and posted without your input. You only see results in the queue and analytics.
+Every qualifying signal gets a draft generated and DM sent without your input. You only see results in the Outbound Tracker and analytics.
 
 Your workflow:
 1. Outpulse handles everything
-2. You check the queue and analytics periodically
+2. You check the Outbound Tracker and analytics periodically
 
 **Best for:**
 - Mature accounts with an extensively trained tone profile
@@ -49,7 +49,7 @@ Your workflow:
 - Situations where speed of response matters (e.g. competitor switching conversations)
 
 <Warning>
-  Full auto is powerful but carries the most risk. Start with manual or smart auto for at least 2 weeks before enabling full auto on any monitor. Review your queue closely for the first few days after switching.
+  Full auto is powerful but carries the most risk. Start with manual or smart auto for at least 2 weeks before enabling full auto on any monitor. Review your Outbound Tracker closely for the first few days after switching.
 </Warning>
 
 ---
@@ -74,19 +74,13 @@ Your workflow:
 3. Update the **Automation mode** field
 4. Save
 
-Changes apply to new signals immediately. Existing signals in your inbox are not affected.
+Changes apply to new signals immediately. Existing pending signals are not affected.
 
 ---
 
 ## Daily caps and safety
 
-Regardless of posting mode, Outpulse enforces daily hard caps on:
-
-- Replies per day
-- DMs per day
-- Total posts per day
-
-These caps protect your account from being flagged by X's spam detection. Outpulse also applies a random 45–90 second delay between every action to mimic human behavior.
+Regardless of posting mode, Outpulse enforces configurable daily caps on DMs per account. These caps protect your account from being flagged by X's spam detection. Outpulse also applies a random delay between every action to mimic human behavior.
 
 If the daily cap is reached, queued actions are deferred to the next available window within your posting schedule.
 

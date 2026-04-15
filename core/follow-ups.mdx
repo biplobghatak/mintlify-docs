@@ -1,65 +1,58 @@
 ---
 title: "Follow-ups"
-description: "Outpulse automatically checks whether your outreach got a response and prompts you to follow up when needed."
+description: "Manage follow-ups manually using the Outbound Tracker pipeline and X's native chat."
 ---
 
-Not every reply gets a response on the first contact. Outpulse automatically monitors your sent replies and DMs and alerts you when 48 hours have passed without a response — so no warm lead goes cold without a follow-up.
+Outpulse does not automatically poll X for inbound replies — conversations happen natively on X. Follow-up management is done manually through the **Outbound Tracker** pipeline status.
 
-## How the follow-up system works
+## The follow-up workflow
 
-1. A reply or DM is sent through Outpulse
-2. After 48 hours, Outpulse checks whether the recipient responded
-3. If they responded: the signal is marked as **responded** in People
-4. If they didn't respond: the signal is flagged as **pending follow-up**
-5. Outpulse prompts you to generate a follow-up message
+1. Outpulse sends a DM (and optional ping) to a prospect
+2. The thread appears in the **Outbound Tracker** with status `Awaiting reply`
+3. You check X for replies (via the **View Chat on X** deep link in the thread)
+4. Update the thread status manually based on what you find
 
-This check runs automatically. You don't need to configure anything.
-
----
-
-## Follow-up statuses
-
-Each sent action moves through these statuses:
-
-| Status | Meaning |
-|--------|---------|
-| `pending_check` | Sent, waiting for the 48-hour check |
-| `pending_followup` | 48 hours passed, no response — follow-up recommended |
-| `followed_up` | You sent a follow-up |
-| `converted` | The person responded or converted |
-| `no_followup` | You decided not to follow up |
+→ [Outbound Tracker](/core/inbox)
 
 ---
 
-## Generating a follow-up
+## Identifying threads that need follow-up
 
-When a signal is in `pending_followup` status, you'll see a **Follow up** prompt on:
+In the Outbound Tracker, filter by `Awaiting reply` to see all threads where you haven't yet updated the status. These are your candidates for follow-up.
 
-- The signal in your inbox
-- The contact record in People
-
-Click **Generate follow-up** to create a follow-up draft. The AI knows the context of the original message and generates something that picks up the thread naturally — not a generic "just checking in."
-
-Generating a follow-up draft costs **1 credit**. Posting it costs **2 credits**.
+Use the **Last outbound** timestamp to identify threads where enough time has passed — 2–3 business days is usually a good follow-up window.
 
 ---
 
-## Marking no follow-up
+## Sending a follow-up
 
-If you decide not to follow up with someone (e.g. not the right fit, conversation already concluded elsewhere), click **No follow-up** to close the loop. The signal moves to `no_followup` and won't appear in your pending follow-ups list again.
+Follow-up DMs are sent the same way as initial outreach:
+
+1. Find the prospect's signal or create a new draft
+2. Generate a follow-up draft (reference the prior context manually or in your tone profile)
+3. Approve and queue
+
+After sending, the new DM appears in the thread detail in the Outbound Tracker.
 
 ---
 
-## Viewing pending follow-ups
+## Updating pipeline status
 
-From the **Inbox**, filter by **Pending follow-up** to see all contacts waiting for a follow-up. This makes it easy to batch your follow-up work once per day.
+After checking the conversation on X, update the thread status to reflect what happened:
 
-[IMAGE: Screenshot of the inbox follow-up filter showing pending follow-up signals]
+| Status | When to use |
+|--------|-------------|
+| `Replied — hot lead` | Prospect responded positively |
+| `Replied — warm` | Prospect responded, interest unclear |
+| `No response` | Decided not to follow up further |
+| `Closed — won` | Deal closed or goal achieved |
+| `Closed — lost` | Not a fit |
 
 ---
 
 ## Follow-up best practices
 
-- **One follow-up is usually enough** — more than that risks being marked as spam
+- **One follow-up is usually enough** — more than that risks being marked as spam on X
 - **Add new value in the follow-up** — don't just repeat the first message; share something relevant or ask a different question
-- **Timing matters** — following up 2–3 business days after the first message performs better than same-day or same-week follow-ups
+- **Timing matters** — following up 2–3 business days after the first message performs better than same-day or weekly follow-ups
+- **Use private notes** — jot down what you know about the prospect in the thread's Notes field before writing the follow-up

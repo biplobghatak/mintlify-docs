@@ -1,111 +1,74 @@
 ---
-title: "Inbox"
-description: "Review signals, generate drafts, and take action on high-intent posts from your X monitors."
+title: "Outbound Tracker"
+description: "Track every DM you've sent, manage pipeline status, and deep-link to conversations on X."
 ---
 
-The inbox is where high-intent signals appear after being found and scored by your monitors. It's your daily workspace in Outpulse.
+The **Outbound Tracker** (accessible via **Inbox** in the sidebar) is your post-send workspace. It shows every DM Outpulse has sent on your behalf, lets you manage pipeline status manually, and gives you a one-click link to continue the conversation natively on X.
 
-[IMAGE: Screenshot of the full Inbox view showing signal cards with intent scores, filters, and action buttons]
+[IMAGE: Screenshot of the Outbound Tracker showing the two-pane layout: thread list on the left and thread detail on the right]
 
-## What a signal shows
+## Two-pane layout
 
-Each signal card displays:
+### Thread list (left pane)
 
-- **The original post** — full text, timestamp, and a link to view it on X
-- **Author profile** — name, X handle, follower count, bio
-- **Intent score** — 1–10 visual bar showing purchase intent strength
-- **ICP match reason** — one-sentence explanation of why the AI scored this post for your ICP
-- **Action buttons** — Generate reply, Generate DM, Skip, Mark outcome
+Every DM thread appears as a row showing:
 
-### Intent score
+- **Prospect handle and display name**
+- **Avatar**
+- **Status badge** — current pipeline stage
+- **Last outbound** — timestamp of the most recent DM sent
+- **Message preview** — first line of the last DM
 
-The score represents how likely the author is to be in a buying conversation relevant to your product.
+Click any row to open the thread detail.
 
-| Score | Meaning |
-|-------|---------|
-| 9–10 | Very strong buying signal — high priority |
-| 7–8 | Clear intent — worth engaging |
-| 5–6 | Moderate interest — below default threshold |
-| 1–4 | Weak or indirect signal — discarded by default |
+### Thread detail (right pane)
 
-Your monitor's threshold controls which scores make it to the inbox. The default is 7.
+Selecting a thread shows:
 
----
-
-## Filters
-
-Use the filters at the top of the inbox to focus on what matters:
-
-| Filter | Description |
-|--------|-------------|
-| **Pending** | Signals waiting for action |
-| **Draft generated** | Signal has a draft ready to review |
-| **Approved** | Draft approved, in queue or posted |
-| **Rejected** | Draft rejected, signal not actioned |
-| **Posted** | Reply or DM successfully sent |
-| **Skipped** | Signal skipped without engaging |
-| **Competitor** | Signals from competitor account monitors |
-
-## Sort options
-
-Sort signals by:
-- **Newest** — most recent posts first
-- **Intent score** — highest-scoring signals first
-- **Follower count** — largest audiences first
+- **Full message history** — every DM sent to this prospect, in chronological order
+- **Status dropdown** — update the pipeline stage manually
+- **Private notes field** — internal notes visible only to you (not sent to the prospect)
+- **"View Chat on X" button** — deep links to the conversation on X so you can reply natively
 
 ---
 
-## Taking action on a signal
+## Pipeline status
 
-### Generate a reply
+Outpulse does not poll X for inbound replies — conversations are managed natively on X. Instead, you update the pipeline status manually as the conversation progresses.
 
-Click **Generate reply** to create an AI draft that replies to the post publicly. The draft is written in your tone and references the specific post content.
+| Status | Meaning |
+|--------|---------|
+| `Awaiting reply` | DM sent, no update yet |
+| `Replied — hot lead` | Prospect responded positively |
+| `Replied — warm` | Prospect responded, interest unclear |
+| `Closed — won` | Deal closed or goal achieved |
+| `Closed — lost` | Prospect not interested |
+| `No response` | Decided not to follow up further |
 
-Costs 1 credit to generate.
-
-### Generate a DM
-
-Click **Generate DM** to create a draft direct message to the post author. DMs are more personal and direct — useful when you want to start a private conversation.
-
-Costs 1 credit to generate.
-
-### Skip
-
-Click **Skip** if the signal isn't relevant or worth engaging with. The signal moves to the Skipped filter and won't reappear.
-
-Skipping is free.
-
-### Mark outcome
-
-If you've already engaged with this person outside of Outpulse (or the conversation led somewhere), use **Mark outcome** to record it without generating a draft.
-
-Options: replied, followed, dmed, lead, customer
+To update: open the thread, click the **Status** dropdown, and choose the new stage.
 
 ---
 
-## Reviewing drafts in the inbox
+## Viewing conversations on X
 
-When a draft is generated, it appears directly beneath the signal card. You can:
-
-- **Approve** — send the draft to the posting queue
-- **Edit and approve** — modify the draft text, then approve
-- **Regenerate** — request a new draft (optionally with feedback)
-- **Reject** — discard the draft without posting
-
-→ [More on drafts](/core/drafts)
+Click **View Chat on X** in the thread detail to open the conversation directly on X. Replies happen natively on X — Outpulse only tracks what it sends, not inbound messages.
 
 ---
 
-## Bulk actions
+## Private notes
 
-Select multiple signals using the checkboxes to apply bulk actions:
+Each thread has a **Notes** field for internal context — qualification notes, company details, next steps. Notes are never sent to the prospect and are only visible to you.
 
-- **Skip all** — skip all selected signals
-- **Generate drafts** — generate drafts for all selected signals at once
-- **Approve all** — approve all selected drafts
+---
 
-Bulk draft generation charges 1 credit per signal.
+## Searching and filtering
 
-<Tip>
-  Sort by intent score and bulk-approve the top 10 signals each morning for an efficient daily workflow.
-</Tip>
+Use the search bar at the top of the thread list to filter by prospect handle or display name. Status filters let you focus on a specific pipeline stage — for example, viewing all "Awaiting reply" threads that need a follow-up check.
+
+---
+
+## Credit note
+
+DMs are charged when they are sent — not when they're drafted. Viewing or managing threads in the Outbound Tracker is always free.
+
+→ [Credit costs](/credits/credit-costs)
