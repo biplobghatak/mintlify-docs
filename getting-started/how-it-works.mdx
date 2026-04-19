@@ -100,9 +100,14 @@ Each monitor has its own automation mode. You can run different monitors at diff
 Outpulse is built to protect your X account from being flagged or banned.
 
 - **Human-like delays** between every action
-- **Configurable daily DM caps** per connected X account
+- **Daily caps enforced automatically** — 50 DMs and 50 reply pings per connected X account per day
 - **Content similarity check** before every send — never sends duplicate messages
-- **Warm-up mode** for new or small accounts — starts with lower caps that increase gradually
+- **Warm-up mode** for new or small accounts (under 50 followers, first 14 days) — caps drop to 30 DMs / 30 reply pings per day and increase gradually
 - **Rate limiting** per connected X account
+- **Opt-out detection** — replies containing "stop", "unsubscribe", or similar intent are flagged automatically and no further DMs are sent to that person
 
 These safeguards run automatically. You don't need to configure them.
+
+<Warning>
+  **You are responsible for complying with X's platform rules.** Outpulse helps you draft and send messages efficiently, but automated outreach to strangers carries inherent risk under X's policies. Unsolicited or bulk DMs can result in account restrictions. Use manual approval mode when starting out, keep volume conservative, and review X's [Automation Rules](https://help.twitter.com/en/rules-and-policies/x-automation) before enabling auto modes.
+</Warning>

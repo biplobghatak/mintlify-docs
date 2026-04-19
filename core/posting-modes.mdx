@@ -50,6 +50,8 @@ Your workflow:
 
 <Warning>
   Full auto is powerful but carries the most risk. Start with manual or smart auto for at least 2 weeks before enabling full auto on any monitor. Review your Outbound Tracker closely for the first few days after switching.
+
+  Do not use Full auto on broad keyword monitors. It is only appropriate for tight, high-precision queries where false positives are rare. Sending automated DMs to unqualified contacts at scale increases the risk of X account restrictions.
 </Warning>
 
 ---
@@ -80,8 +82,27 @@ Changes apply to new signals immediately. Existing pending signals are not affec
 
 ## Daily caps and safety
 
-Regardless of posting mode, Outpulse enforces configurable daily caps on DMs per account. These caps protect your account from being flagged by X's spam detection. Outpulse also applies a random delay between every action to mimic human behavior.
+Regardless of posting mode, Outpulse enforces hard daily caps per connected X account:
 
-If the daily cap is reached, queued actions are deferred to the next available window within your posting schedule.
+| Account type | DMs / day | Reply pings / day |
+|---|---|---|
+| Standard | 50 | 50 |
+| Warm-up (< 50 followers, first 14 days) | 30 | 30 |
+
+Outpulse also applies a random human-like delay between every action. If the daily cap is reached, queued actions are deferred to the next available window within your posting schedule.
 
 → [Posting schedule settings](/settings/schedule)
+
+---
+
+## Compliance
+
+<Warning>
+  **You are responsible for complying with X's platform rules.** Outpulse provides the tools; how you use them is your responsibility. Automated outreach to users who haven't engaged with you first is considered unsolicited by X and may result in account restrictions or suspension.
+
+  Recommended practices:
+  - Start with **Manual** mode for at least 2 weeks on any new monitor or account
+  - Keep intent thresholds high (7+) to avoid reaching low-quality contacts
+  - Never enable **Full auto** on broad keyword monitors
+  - Review X's [Automation Rules](https://help.twitter.com/en/rules-and-policies/x-automation) before scaling up
+</Warning>
