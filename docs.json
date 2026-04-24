@@ -12,8 +12,8 @@
   },
   "favicon": "/favicon.svg",
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/images/Outpulse_full_logo_black.svg",
+    "dark": "/images/Outpulse_full_logo_white.svg"
   },
   "navbar": {
     "links": [

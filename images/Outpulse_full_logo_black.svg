@@ -1,0 +1,17 @@
+<svg width="390" height="86" viewBox="0 0 390 86" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Icon -->
+  <path d="M0 17C0 7.61116 7.61116 0 17 0H69C78.3888 0 86 7.61116 86 17V69C86 78.3888 78.3888 86 69 86H17C7.61116 86 0 78.3888 0 69V17Z" fill="#3EB8FF"/>
+  <circle cx="43" cy="43" r="28" fill="none" stroke="#FFFFFF" stroke-width="7"/>
+  <path d="M10 43 H26 L33 26 L43 62 L53 26 L60 47 H76"
+        stroke="#3EB8FF" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <path d="M10 43 H26 L33 26 L43 62 L53 26 L60 47 H76"
+        stroke="#FFFFFF" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+  <!-- Wordmark -->
+  <text x="104" y="62"
+        font-family="Inter, 'Segoe UI', system-ui, -apple-system, sans-serif"
+        font-size="60"
+        font-weight="700"
+        letter-spacing="-2"
+        fill="#0E1116">outpulse</text>
+</svg>
