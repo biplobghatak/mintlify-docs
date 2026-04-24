@@ -1,0 +1,78 @@
+---
+title: "Connect your Bluesky account"
+description: "How to connect, manage, and disconnect Bluesky accounts in Outpulse using an app password."
+keywords: ["bluesky", "app password", "atproto", "connect account"]
+---
+
+Outpulse connects to Bluesky using an **app password** — a scoped credential you generate in Bluesky that grants posting and DM access without exposing your real password. Tokens are encrypted with AES-256 at rest.
+
+<Note>
+  Bluesky does not support third-party OAuth the same way X does, so app passwords are the official way for external tools to post on your behalf. You can revoke an app password at any time from Bluesky settings.
+</Note>
+
+## Create an app password in Bluesky
+
+<Steps>
+  <Step title="Open Bluesky settings">
+    Go to [bsky.app/settings/app-passwords](https://bsky.app/settings/app-passwords) while signed in.
+  </Step>
+  <Step title="Add a new app password">
+    Click **Add App Password**, give it a recognizable name like `Outpulse`, and make sure the option to **Allow access to direct messages** is enabled — Outpulse needs it to send DMs.
+  </Step>
+  <Step title="Copy the generated password">
+    Bluesky shows the password only once, in the format `xxxx-xxxx-xxxx-xxxx`. Copy it before closing the dialog.
+  </Step>
+</Steps>
+
+## Connect the account in Outpulse
+
+1. Go to **Settings → Connected accounts**
+2. In the **Bluesky** card, click **Connect Bluesky**
+3. Enter your Bluesky **handle** (e.g. `yourname.bsky.social` or your custom domain) and paste the **app password**
+4. Click **Connect**
+
+Outpulse validates the credentials, stores the resulting session tokens encrypted, and fetches your profile info.
+
+<Warning>
+  Never paste your main Bluesky password. Outpulse will reject it, and even if it succeeded it would expose your full account. Always use an app password with a name you recognize so you can revoke it cleanly later.
+</Warning>
+
+## What Outpulse can do on Bluesky
+
+| Capability | How it's used |
+|------------|---------------|
+| Read posts via AppView search | Monitors scan for keywords, hashtags, and posts from tracked accounts |
+| Fetch profiles | Display follower counts and profile context on signals |
+| Post replies | Send the public ping reply in Reply + DM mode |
+| Send chat messages | Deliver the DM through Bluesky's chat (DM) API |
+
+Outpulse does not read your chat inbox history and does not browse your follows or followers list.
+
+## Character limit
+
+Bluesky posts are capped at **300 graphemes** (not UTF-16 code units). Outpulse counts graphemes when generating drafts and will refuse to send a reply or DM that exceeds the cap.
+
+## Pausing an account
+
+Pausing stops all posting from the Bluesky account without disconnecting it. Monitors targeting Bluesky keep scanning and scoring, but no drafts are sent until you resume.
+
+To pause: **Settings → Connected accounts → Pause** on the Bluesky card.
+
+## Disconnecting an account
+
+Disconnecting removes the account from Outpulse and clears the encrypted session tokens. Any monitors using that Bluesky account are paused automatically.
+
+To disconnect: **Settings → Connected accounts → Disconnect** on the Bluesky card.
+
+<Warning>
+  Disconnecting in Outpulse does not revoke the app password on Bluesky's side. To fully revoke access, go to [bsky.app/settings/app-passwords](https://bsky.app/settings/app-passwords) and delete the `Outpulse` app password there.
+</Warning>
+
+## Troubleshooting
+
+| Problem | What to check |
+|---------|---------------|
+| "Invalid credentials" | Confirm the handle is correct (no leading `@`) and the app password hasn't been revoked |
+| DMs fail to send | The app password must be created with **direct messages** access enabled. Recreate it with DM access and reconnect |
+| "Rate limited" on connect | Bluesky rate-limits login attempts — wait 15 minutes before retrying |
+| Account reconnect needed | App password sessions can expire. Disconnect and reconnect with a fresh app password |

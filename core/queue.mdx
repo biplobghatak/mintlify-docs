@@ -53,7 +53,7 @@ When a draft is approved, Outpulse doesn't post it immediately. It goes through 
 3. **Daily cap check** — verifies the daily DM limit for this account hasn't been hit
 4. **Similarity check** — ensures the draft isn't too similar to a recently sent message
 5. **Human-like delay** — waits before firing to mimic human behaviour
-6. **Send to X** — ping reply fired (best-effort) if Reply+DM mode is selected, then DM sent via Twitter API v2
+6. **Send** — ping reply fired (best-effort) if Reply+DM mode is selected, then DM sent via X API v2 or Bluesky chat API depending on the monitor's target platform
 7. **Charge credits** — 2 credits (DM only) or 5 credits (Reply+DM) deducted on success
 
 If any check fails, the action is either deferred or failed.

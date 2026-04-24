@@ -3,7 +3,7 @@ title: "Posting modes"
 description: "Understand manual, smart auto, and full auto modes — and how to choose the right one for each monitor."
 ---
 
-Each monitor in Outpulse has its own posting mode. You can run different monitors at different automation levels depending on the context, the stakes, and how much you trust the signal quality.
+Each monitor in Outpulse has its own posting mode. You can run different monitors at different automation levels depending on the context, the stakes, and how much you trust the signal quality. Posting modes work identically on X and Bluesky.
 
 ## The three modes
 
@@ -82,12 +82,14 @@ Changes apply to new signals immediately. Existing pending signals are not affec
 
 ## Daily caps and safety
 
-Regardless of posting mode, Outpulse enforces hard daily caps per connected X account:
+Regardless of posting mode, Outpulse enforces hard daily caps per connected account. Caps are tracked per account per day (not per workspace) and apply on top of any per-platform rate limits.
 
-| Account type | DMs / day | Reply pings / day |
-|---|---|---|
-| Standard | 50 | 50 |
-| Warm-up (< 50 followers, first 14 days) | 30 | 30 |
+| Platform | Account type | DMs / day | Reply pings / day |
+|----------|--------------|-----------|-------------------|
+| X | Standard | 30 | 30 |
+| X | Warm-up (< 50 followers, first 14 days) | 15 | 15 |
+| Bluesky | Standard | 50 | 50 |
+| Bluesky | Warm-up (< 50 followers, first 14 days) | 25 | 25 |
 
 Outpulse also applies a random human-like delay between every action. If the daily cap is reached, queued actions are deferred to the next available window within your posting schedule.
 

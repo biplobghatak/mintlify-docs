@@ -1,15 +1,15 @@
 ---
 title: "Follow-ups"
-description: "Manage follow-ups manually using the Outbound Tracker pipeline and X's native chat."
+description: "Manage follow-ups manually using the Outbound Tracker pipeline and each platform's native chat."
 ---
 
-Outpulse does not automatically poll X for inbound replies — conversations happen natively on X. Follow-up management is done manually through the **Outbound Tracker** pipeline status.
+Outpulse does not automatically poll X or Bluesky for inbound replies — conversations happen natively on the platform where the DM was sent. Follow-up management is done manually through the **Outbound Tracker** pipeline status.
 
 ## The follow-up workflow
 
 1. Outpulse sends a DM (and optional ping) to a prospect
 2. The thread appears in the **Outbound Tracker** with status `Awaiting reply`
-3. You check X for replies (via the **View Chat on X** deep link in the thread)
+3. You check the source platform for replies (via the **View Chat on X** or **View on Bluesky** deep link in the thread)
 4. Update the thread status manually based on what you find
 
 → [Outbound Tracker](/core/inbox)
@@ -38,7 +38,7 @@ After sending, the new DM appears in the thread detail in the Outbound Tracker.
 
 ## Updating pipeline status
 
-After checking the conversation on X, update the thread status to reflect what happened:
+After checking the conversation on the source platform, update the thread status to reflect what happened:
 
 | Status | When to use |
 |--------|-------------|
@@ -52,7 +52,7 @@ After checking the conversation on X, update the thread status to reflect what h
 
 ## Follow-up best practices
 
-- **One follow-up is usually enough** — more than that risks being marked as spam on X
+- **One follow-up is usually enough** — more than that risks being marked as spam on X or Bluesky
 - **Add new value in the follow-up** — don't just repeat the first message; share something relevant or ask a different question
 - **Timing matters** — following up 2–3 business days after the first message performs better than same-day or weekly follow-ups
 - **Use private notes** — jot down what you know about the prospect in the thread's Notes field before writing the follow-up
