@@ -9,7 +9,7 @@ Understanding these five concepts gives you a complete mental model of Outpulse.
 
 ### Monitor
 
-A monitor is a saved search rule. It defines *what* Outpulse looks for on X or Bluesky — a keyword phrase, a hashtag, a competitor's replies, or any custom query. Each monitor targets one platform at a time.
+A monitor is a saved search rule. It defines *what* Outpulse looks for on X — a keyword phrase, a hashtag, a competitor's replies, or any custom query.
 
 Outpulse runs every active monitor every 20 minutes. A single workspace can have unlimited monitors.
 
@@ -54,7 +54,7 @@ Every 20 minutes per active monitor:
 
   Monitor query
        ↓
-  Fetch matching posts (X API v2 or Bluesky AppView)
+  Fetch matching posts (X API v2)
        ↓
   Deduplicate (48h Redis window)
        ↓
@@ -74,7 +74,7 @@ Every 20 minutes per active monitor:
      Schedule constraints (hours, days, timezone)
      Daily DM caps enforced
        ↓
-  Send via X API v2 or Bluesky chat API
+  Send via X API v2
   Ping reply fired (best-effort) if Reply+DM mode selected
   Charge 2 credits (DM only) or 5 credits (Reply+DM) on success
 ```
@@ -100,14 +100,14 @@ Each monitor has its own automation mode. You can run different monitors at diff
 Outpulse is built to protect your X account from being flagged or banned.
 
 - **Human-like delays** between every action
-- **Daily caps enforced automatically** per connected account — X: 30 DMs and 30 reply pings per day; Bluesky: 50 DMs and 50 reply pings per day
+- **Daily caps enforced automatically** per connected account — 30 DMs and 30 reply pings per day
 - **Content similarity check** before every send — never sends duplicate messages
-- **Warm-up mode** for new or small accounts (under 50 followers, first 14 days) — caps drop to 15/day on X and 25/day on Bluesky, and increase gradually
+- **Warm-up mode** for new or small accounts (under 50 followers, first 14 days) — caps drop to 15/day and increase gradually
 - **Rate limiting** per connected account
 - **Opt-out detection** — replies containing "stop", "unsubscribe", or similar intent are flagged automatically and no further DMs are sent to that person
 
 These safeguards run automatically. You don't need to configure them.
 
 <Note>
-  **A note on platform compliance.** Outpulse is designed to help you reach the right people at the right time — but it's worth being mindful of each platform's guidelines on automated outreach. Starting with manual approval mode, keeping intent thresholds high, and reviewing X's [Automation Rules](https://help.twitter.com/en/rules-and-policies/x-automation) and the [Bluesky Community Guidelines](https://bsky.social/about/support/community-guidelines) are good habits that protect your accounts and lead to better results long-term.
+  **A note on platform compliance.** Outpulse is designed to help you reach the right people at the right time — but it's worth being mindful of X's guidelines on automated outreach. Starting with manual approval mode, keeping intent thresholds high, and reviewing X's [Automation Rules](https://help.twitter.com/en/rules-and-policies/x-automation) are good habits that protect your accounts and lead to better results long-term.
 </Note>

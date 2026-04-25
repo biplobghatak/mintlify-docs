@@ -1,26 +1,11 @@
 ---
 title: "Monitors"
-description: "Create and manage monitors to define what Outpulse searches for on X and Bluesky."
+description: "Create and manage monitors to define what Outpulse searches for on X."
 ---
 
 A monitor is a saved search rule. Each monitor runs every 20 minutes and feeds matching posts into the scoring pipeline. High-intent posts become signals ready for outreach.
 
-You can create unlimited monitors per workspace, and each monitor targets a single platform — either **X** or **Bluesky**.
-
-## Target platform
-
-When you create a monitor, the first choice is the platform it runs against. You must have a connected account on that platform for the monitor to activate.
-
-| Platform | What it searches | Connected account required |
-|----------|------------------|---------------------------|
-| **X** | X search API (posts, replies, hashtag streams) | X account (OAuth) |
-| **Bluesky** | Bluesky AppView search (posts, author feeds) | Bluesky account (app password) |
-
-Monitors share the same fields across platforms — keywords, hashtags, accounts, competitor handles, follower ranges — and Outpulse translates them into the right query shape for each platform at scan time.
-
-<Note>
-  Bluesky's AppView search does not support boolean `OR` the same way X does. For Bluesky monitors, Outpulse runs each keyword as a separate search and merges the results, so you get the same effective behavior without writing the query differently.
-</Note>
+You can create unlimited monitors per workspace. All monitors run against **X**.
 
 ## Signal templates
 
@@ -52,7 +37,7 @@ Searches the selected platform for posts containing your query string. Use this 
 
 **Tips:**
 - Wrap phrases in quotes for exact-match
-- Use `AND`/`OR` for boolean logic (X only — Bluesky runs each keyword as a separate search)
+- Use `AND`/`OR` for boolean logic
 - Be specific — broad queries produce more noise
 
 ### Hashtag monitor
@@ -63,11 +48,11 @@ Searches posts with a specific hashtag. Best for communities that use consistent
 
 Watches for posts that mention or reply to a specific competitor's account. Surfaces people who are frustrated with, comparing, or switching away from a competitor — high-intent by definition.
 
-Enter the competitor's handle for the monitor's target platform (e.g. `@competitorapp` on X, or `competitor.bsky.social` on Bluesky).
+Enter the competitor's handle (e.g. `@competitorapp`).
 
 ### Account monitor
 
-Watches a specific account for new posts. Useful for tracking a potential customer, a key industry voice, or a prospect you've been watching. Works on both X and Bluesky.
+Watches a specific account for new posts. Useful for tracking a potential customer, a key industry voice, or a prospect you've been watching.
 
 ---
 
@@ -75,10 +60,9 @@ Watches a specific account for new posts. Useful for tracking a potential custom
 
 1. Go to **Monitors** in the sidebar
 2. Click **New monitor**
-3. Pick the target platform (X or Bluesky)
-4. Choose a monitor type
-5. Fill in the query and settings (see below)
-6. Click **Save**
+3. Choose a monitor type
+4. Fill in the query and settings (see below)
+5. Click **Save**
 
 The first scan runs within 20 minutes of creation.
 

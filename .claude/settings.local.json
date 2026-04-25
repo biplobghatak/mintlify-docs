@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh api:*)",
+      "Bash(gh auth:*)",
+      "WebFetch(domain:api.github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(git clone:*)",
+      "Bash(grep -A5 -E \"\\(Solo|Growth|Agency|Starter|Team|Scale|credits|plan|price|\\\\$\\)\")"
+    ]
+  },
+  "enabledPlugins": {
+    "mintlify@claude-plugins-official": true
+  }
+}

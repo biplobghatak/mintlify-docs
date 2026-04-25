@@ -1,9 +1,9 @@
 ---
 title: "Connected accounts"
-description: "Manage the X and Bluesky accounts connected to your workspace."
+description: "Manage the X accounts connected to your workspace."
 ---
 
-The Connected accounts page (**Settings → Connected accounts**) is where you manage which X and Bluesky accounts Outpulse can post from.
+The Connected accounts page (**Settings → Connected accounts**) is where you manage which X accounts Outpulse can post from.
 
 Each connected account is scoped to the current workspace. The same account can be connected in multiple workspaces independently.
 
@@ -13,17 +13,6 @@ Each connected account is scoped to the current workspace. The same account can 
 2. Click **Connect new account** in the X card
 3. You'll be redirected to X's OAuth page — authorize Outpulse
 4. You'll be redirected back and the account will appear in the list
-
-## Adding a Bluesky account
-
-Bluesky uses an **app password** instead of OAuth. Generate one at [bsky.app/settings/app-passwords](https://bsky.app/settings/app-passwords) with **direct messages** access enabled, then:
-
-1. Go to **Settings → Connected accounts**
-2. In the **Bluesky** card, click **Connect Bluesky**
-3. Enter your handle (e.g. `yourname.bsky.social`) and paste the app password
-4. Click **Connect**
-
-→ [Full Bluesky connection guide](/getting-started/connect-bluesky-account)
 
 [IMAGE: Screenshot of the Connected accounts page showing a connected account with status and action buttons]
 
@@ -35,7 +24,7 @@ Bluesky uses an **app password** instead of OAuth. Generate one at [bsky.app/set
 | **Paused** | Connected but posting stopped |
 | **Error** | Authorization issue — needs reconnection |
 
-If an account shows an error status, disconnect it and reconnect. The most common cause is an expired or revoked token — for X that means re-authorizing OAuth, for Bluesky that means generating a fresh app password.
+If an account shows an error status, disconnect it and reconnect. The most common cause is an expired or revoked token — re-authorize OAuth to fix it.
 
 ## Pausing an account
 
@@ -52,10 +41,7 @@ Click **Resume** to restart posting. Queued actions will begin processing on the
 Disconnecting removes the account from Outpulse and deletes its stored tokens. Any monitors tied to this account will be paused automatically.
 
 <Warning>
-  Disconnecting does not revoke authorization on the platform side.
-
-  - **X:** go to **X Settings → Security and account access → Connected apps** and remove Outpulse there.
-  - **Bluesky:** go to [bsky.app/settings/app-passwords](https://bsky.app/settings/app-passwords) and delete the Outpulse app password.
+  Disconnecting does not revoke authorization on the platform side. To fully revoke, go to **X Settings → Security and account access → Connected apps** and remove Outpulse there.
 </Warning>
 
 ## Your profile
