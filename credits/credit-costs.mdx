@@ -9,8 +9,13 @@ Every billable action in Outpulse has a fixed credit cost. Here's the full break
 
 | Action | Credits | When it's charged |
 |--------|---------|-------------------|
+| **Generate DM draft** | 0.5 | When a `dm_only` AI draft is successfully generated |
+| **Generate Reply + DM pair** | 1.0 | When a `ping_and_dm` AI pair (reply + DM) is successfully generated |
 | **Send DM only** | 2 | When a DM is successfully delivered to X |
-| **Send Reply + DM (ping combo)** | 5 | When Outpulse fires a public "Just sent you a DM!" ping reply and then sends the personalized DM |
+| **Send Reply + DM (ping combo)** | 5 | When Outpulse fires a public reply ping and the DM is delivered |
+
+Regenerating a draft costs the same as the initial generation. Failed
+generations do not consume credits.
 
 ## Free actions
 
@@ -19,8 +24,7 @@ These actions are always free:
 - Running monitors (scanning X every 20 minutes)
 - Intent scoring and ICP filtering
 - Bio prefiltering (Step A signal quality check)
-- Generating AI drafts
-- Regenerating or editing drafts
+- Editing a draft (typing / manual changes — no AI call)
 - Viewing signals, the outbound tracker, people, and analytics
 - Filtering, sorting, and searching
 - Updating pipeline stages and notes
@@ -33,5 +37,9 @@ The **Reply + DM** combo (5 credits) sends a short public reply to the prospect'
 **DM only** (2 credits) skips the public ping and sends only the private DM. Use this on monitors where you prefer not to leave a public trail.
 
 The outreach mode is configured per monitor.
+
+Both modes also incur a small AI-draft cost when the messages are
+generated: 0.5 credits for a DM-only draft, 1 credit for a Reply + DM
+pair. See the cost table above.
 
 → [Buy credits](/credits/buying-credits)
