@@ -76,7 +76,7 @@ Every 20 minutes per active monitor:
        ↓
   Send via X API v2
   Ping reply fired (best-effort) if Reply+DM mode selected
-  Charge 2 credits (DM only) or 5 credits (Reply+DM) on success
+  Charge 5 credits on success (same cost for DM only and Reply+DM)
 ```
 
 ---
@@ -100,9 +100,9 @@ Each monitor has its own automation mode. You can run different monitors at diff
 Outpulse is built to protect your X account from being flagged or banned.
 
 - **Human-like delays** between every action
-- **Daily caps enforced automatically** per connected account — 30 DMs and 30 reply pings per day
+- **Daily caps enforced automatically** per connected X account — 30 DMs and 30 reply pings per day
 - **Content similarity check** before every send — never sends duplicate messages
-- **Warm-up mode** for new or small accounts (under 50 followers, first 14 days) — caps drop to 15/day and increase gradually
+- **Warm-up mode** for new or small accounts (under 50 followers, first 14 days) — caps drop to 15 DMs and 15 reply pings per day, then return to normal once the account ages out of warm-up
 - **Rate limiting** per connected account
 - **Opt-out detection** — replies containing "stop", "unsubscribe", or similar intent are flagged automatically and no further DMs are sent to that person
 

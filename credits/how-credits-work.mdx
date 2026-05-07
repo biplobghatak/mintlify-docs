@@ -3,15 +3,21 @@ title: "How credits work"
 description: "Outpulse runs on a monthly subscription with a fixed credit refill. Top-up packs let you add extra credits that never expire."
 ---
 
-Outpulse uses a **subscription + top-up** model. Every plan includes a monthly credit refill. If you need more mid-cycle, you can buy a top-up pack.
+Outpulse uses a **subscription + top-up** model. Every plan includes a
+monthly credit refill. If you need more mid-cycle, you can buy a top-up pack
+that never expires.
 
 ## What are credits?
 
-Credits are the unit of usage in Outpulse. Every action that requires a post to X costs a fixed number of credits. Scanning, intent scoring, and AI draft generation are all free — you only pay when a DM (or DM + ping combo) is actually sent.
+Credits are the unit of usage in Outpulse. Every action that hits the X API
+or runs an AI draft costs a fixed number of credits. Scanning, intent
+scoring, and ICP filtering are all free — you only spend credits on AI
+drafts and on DMs that are actually sent.
 
 | Action | Cost |
 |--------|------|
-| **Send DM only** | 2 credits |
+| **Generate DM draft** | 0.25 credits |
+| **Send DM** | 5 credits |
 | **Send Reply + DM (ping combo)** | 5 credits |
 
 → [Full credit cost breakdown](/credits/credit-costs)
@@ -20,9 +26,8 @@ Credits are the unit of usage in Outpulse. Every action that requires a post to 
 
 These are always free, regardless of plan:
 
-- Running monitors (scanning X every 20 minutes)
+- Running monitors (Outpulse scans X every 20 minutes)
 - Intent scoring and ICP filtering
-- Generating and regenerating AI drafts
 - Viewing the inbox, signals, analytics
 - Filtering, sorting, and searching
 - Managing pipeline stages and notes
@@ -36,21 +41,27 @@ Your balance is split into two buckets:
 | **Subscription credits** | Monthly plan refill | Reset to your plan's monthly allowance at the start of every billing cycle |
 | **Rollover credits** | Top-up pack purchases | Never expire — carry forward indefinitely |
 
-When Outpulse deducts credits, it drains your **subscription bucket first**, then falls back to rollover credits. This means your rollover credits act as a permanent safety net and are never wasted by a monthly reset.
+When Outpulse deducts credits, it drains your **subscription bucket first**,
+then falls back to rollover credits. This means your rollover credits act as
+a permanent safety net and are never wasted by a monthly reset.
 
 ## Monthly refill
 
-At the start of each billing cycle, your subscription bucket is reset to your plan's monthly credit allowance. Any unused subscription credits from the previous month do not carry over — only rollover (top-up) credits persist.
+At the start of each billing cycle, your subscription bucket is reset to
+your plan's monthly credit allowance. Any unused subscription credits from
+the previous month do not carry over — only rollover (top-up) credits
+persist.
 
 | Plan | Monthly credits |
 |------|----------------|
-| Solo | 1,000 |
-| Growth | 4,000 |
-| Agency | 12,000 |
+| Solo | 2,000 |
+| Growth | 7,000 |
+| Agency | 35,000 |
 
 ## Checking your balance
 
-Your current credit balance appears in the top navigation bar of the dashboard. Click it to go to the Credits page and see:
+Your current credit balance appears in the top navigation bar of the
+dashboard. Click it to go to the Credits page and see:
 
 - Current balance (subscription + rollover)
 - Usage breakdown by action type
@@ -60,8 +71,11 @@ Your current credit balance appears in the top navigation bar of the dashboard. 
 
 ## Credits are per account, not per workspace
 
-Your credit balance is shared across all workspaces. You don't need separate credit pools for different workspaces.
+Your credit balance is shared across all workspaces. You don't need separate
+credit pools for different workspaces.
 
 ## Atomic transactions
 
-Every credit deduction is logged atomically — if an action fails after credits are charged, you'll see a credit refund entry in your ledger. You won't be charged for failed posts.
+Every credit deduction is logged atomically — if an action fails after
+credits are charged, you'll see a credit refund entry in your ledger. You
+won't be charged for failed posts.
