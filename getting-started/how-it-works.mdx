@@ -1,113 +1,113 @@
 ---
 title: "How Outpulse works"
-description: "The core concepts behind monitors, signals, drafts, and the posting pipeline."
+description: "The core concepts behind monitors, leads, campaigns, and the sending pipeline."
 ---
 
 ## Core concepts
 
-Understanding these five concepts gives you a complete mental model of Outpulse.
+Five concepts give you a complete mental model of Outpulse.
 
 ### Monitor
 
-A monitor is a saved search rule. It defines *what* Outpulse looks for on X — a keyword phrase, a hashtag, a competitor's replies, or any custom query.
-
-Outpulse runs every active monitor every 20 minutes. A single workspace can have unlimited monitors.
+A monitor is a saved discovery rule. It defines *where* to look for people
+on X — either the followers/following of one or more target accounts, or
+the repliers to a specific tweet — and applies bio keyword and follower
+filters. Monitors don't send anything; they produce a pool of profiles.
 
 → [Create and manage monitors](/core/monitors)
 
-### Signal
+### Lead
 
-A signal is a post that matched a monitor *and* passed the intent threshold. Not every matching post becomes a signal — Outpulse scores each one first.
+A lead is a profile (or post) that a monitor discovered. Every lead gets
+an AI fit score (1–10) based on your ICP. You can browse, filter, and
+export leads from the **Leads** page.
 
-Signals appear with an intent score (1–10), the author's profile, and the reason it matched your ICP. Signals with a score below your threshold are discarded silently. High-scoring signals are queued for DM outreach.
+→ [Leads](/core/leads)
 
-→ [Outbound Tracker](/core/inbox)
+### Campaign
 
-### Draft
+A campaign is how you actually message people. You pick monitors as
+sources, choose an AI score threshold, import the leads, then bulk-generate
+DM drafts. When you're ready, click Send — Outpulse paces the batch and
+delivers each DM within your daily caps.
 
-A draft is an AI-generated DM for a signal. When you click "Generate DM" on a signal, Outpulse sends the post, your ICP, and your tone profile to Claude. The result is a draft in your writing style, ready to approve or edit.
+→ [Campaigns](/core/campaigns)
 
-You can regenerate with feedback if the first draft misses the mark. Draft generation is free — you're only charged when the DM is sent.
+### Outbound tracker
 
-→ [Drafts and AI writing](/core/drafts)
+Every sent DM appears in the **Outbound Tracker** (the **Inbox** tab) with
+a manual pipeline status. Outpulse doesn't poll X for inbound replies —
+you handle conversations natively on X via a one-click deep link.
 
-### Queue
-
-Approved drafts go into the posting queue. Outpulse doesn't send instantly — it waits a human-like delay, applies your schedule constraints (e.g. only post Mon–Fri, 9am–6pm), and enforces daily DM caps per account.
-
-The queue shows pending, posted, and failed actions so you always know what's happening.
-
-→ [Managing the queue](/core/queue)
+→ [Outbound tracker](/core/inbox)
 
 ### Credit
 
-Credits are the unit of usage. Outpulse only charges credits when a DM (or DM + ping combo) is sent — scanning, scoring, and draft generation are all free. Your monthly plan refills your credit bucket each billing cycle, and top-up packs add rollover credits that never expire.
+Credits are the unit of usage. The two billable actions are:
+
+- **AI draft generation** — 0.25 credits per draft
+- **DM send** — 5 credits per successful delivery
+
+Scanning, scoring, and filtering are all free. Your monthly plan refills
+your credit bucket each billing cycle, and top-up packs add rollover
+credits that never expire.
 
 → [How credits work](/credits/how-credits-work)
 
 ---
 
-## The automation loop
+## The sending loop
 
 ```
-Every 20 minutes per active monitor:
+Monitor (continuously)
+   ├─ Scan followers / following / tweet repliers
+   ├─ Filter by bio keywords and follower range
+   ├─ AI fit-score each profile (1–10)
+   └─ Save as Lead
 
-  Monitor query
-       ↓
-  Fetch matching posts (X API v2)
-       ↓
-  Deduplicate (48h Redis window)
-       ↓
-  Score each post for intent 1–10 (Claude)
-       ↓
-  Score ≥ threshold?
-     Yes → Save as Signal
-     No  → Discard
-       ↓
-  Automation mode?
-     Manual     → Signal waits for your action
-     Smart auto → AI generates draft and decides whether to send
-     Full auto  → Draft generated and queued immediately
-       ↓
-  Posting queue
-     Human-like delay
-     Schedule constraints (hours, days, timezone)
-     Daily DM caps enforced
-       ↓
-  Send via X API v2
-  Ping reply fired (best-effort) if Reply+DM mode selected
-  Charge 5 credits on success (same cost for DM only and Reply+DM)
+You build a Campaign
+   ├─ Pick monitors as sources
+   ├─ Choose AI score threshold
+   └─ Import leads (dedupes against other campaigns)
+
+You generate drafts
+   ├─ Bulk: every pending lead at once
+   └─ Per-lead: regenerate or edit individually
+       — 0.25 credits per draft
+
+You click Send
+   ├─ Each lead enqueued with a human-like scheduledAt
+   ├─ Per-workspace queue worker processes one at a time
+   ├─ Schedule + daily cap enforced on every send
+   └─ DM delivered via X API v2
+       — 5 credits per successful send
 ```
-
----
-
-## Posting modes
-
-Each monitor has its own automation mode. You can run different monitors at different automation levels depending on how much you trust the context.
-
-| Mode | What happens |
-|------|-------------|
-| **Manual** | Signals appear in inbox. You generate drafts and approve each one. |
-| **Smart auto** | Outpulse generates drafts automatically. AI decides which ones are safe to post. You review the rest. |
-| **Full auto** | Every qualifying signal gets a draft generated and posted without your input. |
-
-→ [Posting modes in detail](/core/posting-modes)
 
 ---
 
 ## Account safety
 
-Outpulse is built to protect your X account from being flagged or banned.
+Outpulse is built to protect your X account from being flagged.
 
-- **Human-like delays** between every action
-- **Daily caps enforced automatically** per connected X account — 30 DMs and 30 reply pings per day
-- **Content similarity check** before every send — never sends duplicate messages
-- **Warm-up mode** for new or small accounts (under 50 followers, first 14 days) — caps drop to 15 DMs and 15 reply pings per day, then return to normal once the account ages out of warm-up
-- **Rate limiting** per connected account
-- **Opt-out detection** — replies containing "stop", "unsubscribe", or similar intent are flagged automatically and no further DMs are sent to that person
+- **Human-like delays** between every send — a 50-DM batch is spread
+  across hours, not seconds
+- **Daily caps enforced automatically** per connected account — 30 DMs
+  per day on standard accounts, 15 during warm-up
+- **Warm-up mode** for new or small accounts (under 50 followers, first
+  14 days) — caps drop to 15 DMs per day, then return to standard once
+  the account ages out
+- **Schedule windows** — sends only happen inside your configured hours
+  and days
+- **Failed-send protection** — DMs that hit a cap or land outside your
+  schedule are deferred, not failed
 
 These safeguards run automatically. You don't need to configure them.
 
 <Note>
-  **A note on platform compliance.** Outpulse is designed to help you reach the right people at the right time — but it's worth being mindful of X's guidelines on automated outreach. Starting with manual approval mode, keeping intent thresholds high, and reviewing X's [Automation Rules](https://help.twitter.com/en/rules-and-policies/x-automation) are good habits that protect your accounts and lead to better results long-term.
+  **A note on platform compliance.** Outpulse is built for targeted
+  outreach — not mass messaging. Keep your bio keyword filters tight,
+  start with AI-curated imports at threshold 7+, and review the first 50
+  DMs you send before scaling. Reading X's
+  [Automation Rules](https://help.twitter.com/en/rules-and-policies/x-automation)
+  is worth your time.
 </Note>

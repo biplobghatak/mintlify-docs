@@ -3,51 +3,49 @@ title: "Credit costs"
 description: "A complete breakdown of how many credits each action costs in Outpulse."
 ---
 
-Every billable action in Outpulse has a fixed credit cost. Scanning, intent
-scoring, and ICP filtering are free — you only spend credits on AI drafts and
-on DMs that are actually delivered.
+Every billable action in Outpulse has a fixed credit cost. Scanning,
+profile filtering, and AI fit-scoring are free — you only spend credits
+on AI drafts and on DMs that are actually delivered.
 
 ## Action costs
 
 | Action | Credits | When it's charged |
 |--------|---------|-------------------|
-| **Generate DM draft** | 0.25 | When an AI DM draft is successfully generated for a campaign signal |
-| **Send DM** | 5 | When a DM is successfully delivered to X |
-| **Send Reply + DM (ping combo)** | 5 | When Outpulse fires a public reply ping and the DM is delivered |
+| **Generate DM draft** | 0.25 | When an AI DM draft is successfully generated for a campaign lead |
+| **Regenerate DM draft** | 0.25 | Each regeneration is a fresh AI call, charged the same as the original draft |
+| **Send DM** | 5 | When a DM is successfully delivered via X |
 
-Regenerating a draft costs the same 0.25 credits as the initial generation.
-Failed generations and failed sends do **not** consume credits — if a charge
-goes through and the action then fails, the deduction is refunded to your
-ledger automatically.
+Failed generations and failed sends do **not** consume credits. If credits
+are charged and the action then fails downstream, the deduction is reversed
+in your ledger automatically.
 
 ## Free actions
 
 These actions are always free:
 
-- Running monitors (Outpulse scans X every 20 minutes)
-- Intent scoring and ICP filtering
-- Bio prefiltering (signal-quality check)
+- Running monitors (scanning followers, following, and tweet repliers)
+- Bio keyword and follower-range filtering
+- AI fit scoring (1–10) on every discovered profile
+- Importing leads from monitors into a campaign
 - Editing a draft (typing / manual changes — no AI call)
-- Viewing signals, the outbound tracker, people, and analytics
-- Filtering, sorting, and searching
-- Updating pipeline stages and notes
+- Re-sending a failed lead (only counted as 5 credits if the resend itself succeeds)
+- Viewing campaigns, leads, the outbound tracker, and analytics
+- Filtering, sorting, searching, and exporting CSV/Markdown/JSON
+- Updating thread pipeline status and notes
 - Changing settings
 
-## Reply + DM vs DM only
+## Where the costs land
 
-Each monitor has an **outreach mode** that controls how the DM is delivered.
+Outpulse is currently DM-only. The full lifecycle for a single prospect:
 
-**Reply + DM** sends a short public reply to the prospect's post first —
-"Just sent you a DM! 👋" — before delivering the personalized DM. This
-triggers an X push notification that a raw DM alone often doesn't, lifting
-open rates significantly. It counts as a single billable action at **5
-credits**.
+1. Monitor scans — **free**
+2. Profile passes bio + follower filters — **free**
+3. AI fit score assigned — **free**
+4. You import the lead into a campaign — **free**
+5. You generate a draft — **0.25 credits**
+6. You click Send — **5 credits on successful delivery**
 
-**DM only** skips the public ping and sends only the private DM. Use this on
-monitors where you'd rather not leave a public trail. It also costs **5
-credits** per send.
-
-The outreach mode is configured per monitor on the monitor's settings page.
-Both modes use the same 0.25-credit AI draft cost.
+So the all-in cost of one fully personalized DM is **5.25 credits**, of
+which 5 are only charged if the send actually goes through.
 
 → [Buy credits](/credits/buying-credits)

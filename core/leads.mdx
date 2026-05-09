@@ -1,0 +1,102 @@
+---
+title: "Leads"
+description: "Browse, filter, and export every post and profile your monitors have surfaced across this workspace."
+---
+
+The **Leads** page is your workspace's lead database — every post and
+profile your monitors have found, in one searchable table. Use it to triage
+prospects before importing them into a campaign, or to export lead lists
+for use elsewhere.
+
+[IMAGE: Screenshot of the Leads page showing the source tabs, filter bar, and lead table]
+
+## Two sources
+
+The page has two tabs at the top:
+
+| Tab | What it shows |
+|-----|---------------|
+| **Posts** | Individual post-level matches (a `Signal` row in the schema). Useful when you care about a specific tweet someone wrote. |
+| **Profiles** | Profile-level matches (a `MonitorLead`). Useful when you care about who the person is, regardless of which post triggered the match. |
+
+Each tab has its own filters and selection state — switching tabs clears
+your selection.
+
+---
+
+## Filters
+
+Both tabs support:
+
+- **Monitor** — narrow to leads from one or more monitors
+- **AI score range** — min and max (1–10)
+- **Status** — filter by lead state
+- **Search** — match against handle, display name, or post content
+
+The Posts tab also exposes a **date range** filter (last 24h / 7d / 30d /
+all / custom), since posts are time-bound. Profiles don't have a date
+filter because they represent the person, not a moment.
+
+Filters are mirrored to the URL — share a link to a filtered view with a
+teammate and they'll land on the same query.
+
+---
+
+## Exporting
+
+Click **Export** in the top-right to download leads as **CSV**, **Markdown**,
+or **JSON**.
+
+Three export scopes:
+
+| Scope | What it exports |
+|-------|----------------|
+| **Filtered** | Every lead matching your current filters |
+| **All** | Every lead in this workspace (ignores filters) |
+| **Selected** | Only the rows you've checked |
+
+CSV is the easiest scope for handoff to spreadsheets or other CRMs.
+
+---
+
+## How leads get here
+
+Leads are populated automatically by your monitors:
+
+1. A monitor scans X (followers/following of a target account, or repliers
+   to a tweet)
+2. Each profile is filtered against the monitor's bio keywords and follower
+   range
+3. Survivors are inserted as `MonitorLead` rows (visible in the **Profiles**
+   tab)
+4. Posts that match are inserted as `Signal` rows (visible in the **Posts**
+   tab)
+5. AI scoring runs in the background — the score appears once it finishes
+
+You don't add leads manually. They come from your monitors.
+
+---
+
+## From leads to campaigns
+
+The Leads page is the inspection layer. To actually message anyone, create
+a **Campaign** from one or more monitors — that's where drafts and sends
+happen.
+
+→ [Campaigns](/core/campaigns)
+
+---
+
+## Selecting and bulk actions
+
+Use the checkboxes on each row to build a selection. The selection persists
+across pagination within a tab. From there you can:
+
+- **Export selected** — download just the chosen rows
+- Clear selection with the **Clear** action in the selection bar
+
+<Tip>
+  If you find yourself manually selecting the same kind of leads repeatedly,
+  consider tightening the source monitor's filters (bio keywords, follower
+  range) so the surface area starts narrower.
+</Tip>

@@ -4,7 +4,7 @@ description: "Configure your ICP to make Outpulse's intent scoring accurate and 
 sidebarTitle: "ICP"
 ---
 
-Your ICP (Ideal Customer Profile) is the foundation of everything Outpulse does. It's used by the AI to determine whether a post is from someone who could be a customer — and how strongly they're signaling buying intent.
+Your ICP (Ideal Customer Profile) is the foundation of everything Outpulse does. It powers the AI fit score on every discovered profile and shapes the personalized DM drafts your campaigns generate.
 
 The more specific your ICP, the higher quality your signals will be.
 
@@ -77,22 +77,30 @@ Toggle this on to only surface posts from X-verified accounts (blue check). Usef
 
 ---
 
-## How ICP affects scoring
+## How ICP affects scoring and drafts
 
-When a post matches a monitor, the AI evaluates it against your ICP across several dimensions:
+The ICP shows up in two places:
 
-- Does the author's bio and account match your target job titles and industries?
-- Is the post discussing a pain point you solve?
-- Does the context suggest buying intent or just general interest?
-
-The final intent score (1–10) combines these signals. Posts that strongly match your ICP will score higher — they'll surface in your inbox more reliably.
+1. **AI fit scoring** — every profile a monitor discovers is scored 1–10
+   against your ICP. Bio, follower count, and (for post-mode monitors) the
+   reply text are all evaluated. You filter on this score when importing
+   leads into a campaign.
+2. **Draft generation** — every campaign draft is written using your ICP as
+   context. The AI knows what you sell, who you sell to, and what pain
+   points your product addresses, so the draft can speak to the prospect's
+   situation specifically.
 
 <Tip>
-  After your first week, review the signals you've been skipping. If high-scoring signals aren't relevant, tighten your ICP description or raise your intent threshold on those monitors.
+  After your first campaign, look at the leads that scored 8+ but didn't
+  feel like a fit. If a pattern emerges, tighten your ICP description or
+  add bio keywords to your monitor to filter the pool earlier.
 </Tip>
 
 ---
 
 ## Updating your ICP
 
-Go to **Settings → ICP** to update any field. Changes take effect on the next scan cycle — they don't retroactively re-score existing signals.
+Go to **Settings → ICP** to update any field. Changes take effect on new
+scoring runs and on new drafts — they don't retroactively re-score
+existing leads or re-draft existing campaigns. Use **Regenerate** on
+individual leads to refresh drafts with the updated ICP.

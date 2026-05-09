@@ -49,13 +49,13 @@
               "core/icp",
               "core/tone-profile",
               "core/monitors",
-              "core/inbox",
+              "core/leads",
+              "core/campaigns",
               "core/drafts",
               "core/posting-modes",
-              "core/queue",
-              "core/people",
-              "core/analytics",
-              "core/follow-ups"
+              "core/inbox",
+              "core/follow-ups",
+              "core/analytics"
             ]
           },
           {

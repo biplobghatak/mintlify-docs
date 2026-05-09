@@ -1,134 +1,141 @@
 ---
 title: "Monitors"
-description: "Create and manage monitors to define what Outpulse searches for on X."
+description: "Find people on X who match your ICP — by scanning an account's network or a tweet's repliers."
 ---
 
-A monitor is a saved search rule. Each monitor runs every 20 minutes and feeds matching posts into the scoring pipeline. High-intent posts become signals ready for outreach.
+A monitor is a saved discovery rule. It tells Outpulse where to look for
+people on X — either an account's followers/following list, or the repliers
+to a specific tweet — and what filters to apply before adding them as leads.
 
-You can create unlimited monitors per workspace. All monitors run against **X**.
+Monitors don't send anything. They produce a pool of qualified profiles.
+You then create **campaigns** against one or more monitors to actually
+message people.
 
-## Signal templates
+[IMAGE: Screenshot of the Monitors list showing monitor cards with scan mode, lead count, and pause/run controls]
 
-The fastest way to create a monitor is to use a **signal template** — a pre-built, high-precision monitor tuned for a specific outreach intent. Outpulse ships with five templates:
+---
 
-| Template | What it finds |
-|----------|--------------|
-| **Complaint / buying intent** | Posts expressing frustration with a tool or actively asking for alternatives |
-| **Trigger event** | Posts signalling a business event (new funding, new hire, product launch) that makes someone a timely prospect |
-| **Competitor mention** | Posts mentioning a direct competitor — frustrated users, comparison threads, or switching conversations |
-| **Topic authority** | Posts where the author demonstrates deep expertise in your problem space — ideal for thought-leadership outreach |
-| **Problem post** | Posts describing a pain point your product solves, even without naming a tool |
+## Two scan modes
 
-Each template uses strict boolean queries plus an author-bio prefilter before any AI scoring runs — filtering out noise before it costs you anything.
+When you create a monitor, you pick one of two modes:
 
-Select a template when creating a new monitor and fill in the template variables (e.g. your competitor's handle, your product category). You can also create a monitor from scratch using a custom query.
+### From an Account
 
-## Monitor types
+Outpulse scans the **followers**, **following**, or **both** of one or more
+target accounts. Use this when you know an account whose audience overlaps
+with your ICP — for example a competitor, a respected community leader, or
+a relevant community account.
 
-### Keyword monitor
+You can list multiple target handles per monitor and they're scanned as a
+single pool.
 
-Searches the selected platform for posts containing your query string. Use this for conversational phrases people use when they have a pain point.
+**Scrape options:**
 
-**Good keyword queries:**
-- `"recommend a tool for scheduling social media"`
-- `"looking for a CRM alternative"`
-- `"anyone tried" invoicing software`
-- `"tired of" AND "spreadsheet"`
+| Option | What gets scanned |
+|--------|-------------------|
+| Followers | People who follow the target |
+| Following | People the target follows |
+| Both | Union of followers and following |
 
-**Tips:**
-- Wrap phrases in quotes for exact-match
-- Use `AND`/`OR` for boolean logic
-- Be specific — broad queries produce more noise
+### From a Post
 
-### Hashtag monitor
+Outpulse collects **everyone who replied** to one or more specific tweets.
+Use this when a single post has a thread full of people in the exact
+conversation you care about — pricing complaints, "what should I use"
+threads, or product launch announcements.
 
-Searches posts with a specific hashtag. Best for communities that use consistent hashtags, like `#buildinpublic`, `#IndieHackers`, or `#SaaSFounder`.
+Paste full tweet URLs (`https://x.com/user/status/123…`). You can list
+several URLs per monitor.
 
-### Competitor account monitor
+---
 
-Watches for posts that mention or reply to a specific competitor's account. Surfaces people who are frustrated with, comparing, or switching away from a competitor — high-intent by definition.
+## Filters
 
-Enter the competitor's handle (e.g. `@competitorapp`).
+Both modes apply the same filters to the candidate pool:
 
-### Account monitor
+### Bio keywords
 
-Watches a specific account for new posts. Useful for tracking a potential customer, a key industry voice, or a prospect you've been watching.
+Only keep profiles whose bio contains at least one of the listed words.
+
+Examples: `CEO`, `SaaS founder`, `B2B`, `growth`, `agency`.
+
+Leave empty to keep everyone.
+
+### Follower range
+
+- **Min Followers** — exclude profiles below this size (filters bots and
+  brand-new accounts)
+- **Max Followers** — exclude very large accounts that are unlikely to be
+  real prospects
+- **Min Following** — additional sanity filter for very low-engagement
+  profiles
+
+Set zero on any field to skip that limit.
+
+---
+
+## Connected X account
+
+Each monitor is tied to one connected X account. The scanning runs on that
+account's behalf. If you have multiple accounts in a workspace, pick the
+one whose audience profile best matches the discovery you want to do.
 
 ---
 
 ## Creating a monitor
 
 1. Go to **Monitors** in the sidebar
-2. Click **New monitor**
-3. Choose a monitor type
-4. Fill in the query and settings (see below)
-5. Click **Save**
+2. Click **New Monitor**
+3. Choose **From an Account** or **From a Post**
+4. Fill in target handles or tweet URLs
+5. Set bio keywords and follower limits
+6. Pick the connected X account
+7. Click **Create Monitor**
 
-The first scan runs within 20 minutes of creation.
+Outpulse begins scanning shortly after creation. New leads stream into the
+**Leads** page as they're discovered, and AI scoring runs in the background.
 
-[IMAGE: Screenshot of the New Monitor form showing all fields]
-
----
-
-## Monitor settings
-
-### Name
-
-A label for your own reference. Doesn't affect scanning.
-
-### Query
-
-The search term, phrase, hashtag, or handle. See monitor types above for guidance.
-
-### Automation mode
-
-Controls what happens after a signal is found. You can set different modes per monitor.
-
-| Mode | Behavior |
-|------|----------|
-| **Manual** | Signals wait in inbox. You generate drafts and approve them. |
-| **Smart auto** | Drafts generated automatically. AI decides which are safe to post. Rest stay in inbox for review. |
-| **Full auto** | All drafts generated and posted without your approval. |
-
-→ [Posting modes in detail](/core/posting-modes)
-
-### Intent threshold
-
-The minimum intent score (1–10) a post must reach to become a signal. Posts scoring below this are discarded.
-
-**Default: 7**
-
-- Lower threshold (e.g. 5) = more signals, more noise
-- Higher threshold (e.g. 8–9) = fewer signals, higher quality
-
-Adjust based on the signal-to-noise ratio you're seeing after the first few days.
-
-### Scan interval
-
-How often the monitor runs. Default is every 20 minutes. You can increase this (less frequent) to reduce credit usage on lower-priority monitors.
+[IMAGE: Screenshot of the New Monitor form with both scan modes visible]
 
 ---
 
-## Editing a monitor
+## Monitor lifecycle
 
-Click on any monitor from the Monitors page to edit its settings. Changes take effect on the next scan.
-
-## Pausing a monitor
-
-Pausing stops scanning without deleting the monitor or its history. Use this when you want to temporarily stop a monitor without losing your settings.
-
-## Deleting a monitor
-
-Deleting removes the monitor and its associated signals permanently. This cannot be undone.
+| Action | What it does |
+|--------|--------------|
+| **Pause** | Stops further scanning. Existing leads remain. Resume any time. |
+| **Resume** | Restarts scanning on the next interval. |
+| **Delete** | Removes the monitor and its leads permanently. |
 
 <Warning>
-  Deleting a monitor also removes its signals from your inbox. If you want to stop scanning without losing history, pause the monitor instead.
+  Deleting a monitor also removes its leads from this workspace. To stop
+  scanning without losing the lead pool, **pause** the monitor instead.
 </Warning>
 
 ---
 
-## Monitor performance
+## How monitors feed campaigns
 
-Each monitor shows a signal count — the total number of signals found since creation. Use this to evaluate which monitors are producing results vs. which need query refinement.
+Monitors produce profiles. Campaigns consume them.
 
-[IMAGE: Screenshot of the Monitors list showing signal count per monitor]
+```
+Monitor → Leads pool → Campaign import → Drafts → Sends
+```
+
+When you create a campaign, you pick one or more monitors as sources, set
+an AI score threshold, and Outpulse imports the matching leads. Anyone
+already imported into another campaign in this workspace is excluded
+automatically.
+
+→ [Campaigns](/core/campaigns)
+→ [Leads page](/core/leads)
+
+---
+
+## Plan limits
+
+Each plan has a cap on how many active monitors you can run at once. If you
+hit the cap, the **New Monitor** flow shows an upgrade prompt with the
+relevant plan options.
+
+→ [Subscription plans](/credits/buying-credits)

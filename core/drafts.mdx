@@ -1,91 +1,104 @@
 ---
 title: "Drafts"
-description: "How Outpulse generates AI DM drafts, how to review and edit them, and how the AI learns from your edits."
+description: "How Outpulse generates AI DM drafts inside a campaign, and how to review, edit, and regenerate them."
 ---
 
-A draft is an AI-generated direct message that Outpulse creates for a specific signal. Each draft is written using your tone profile, your ICP context, and the content of the original post.
+A draft is an AI-generated direct message that Outpulse creates for a
+specific lead inside a campaign. Each draft is written using your tone
+profile, your ICP, the lead's profile data, and any campaign-specific
+context you've added.
 
-## Generating a draft
+Drafting happens inside a campaign — not on a per-lead basis from the
+**Leads** page. To generate drafts you import leads into a campaign first.
 
-From any signal, click **Generate DM**.
+→ [Campaigns](/core/campaigns)
 
-Outpulse sends the post, your ICP description, and your tone profile to the AI. The result is a draft that:
+## Generating drafts
 
-- References the specific context of the original post
-- Sounds like you, not like AI
-- Opens a conversation rather than making a hard pitch
+From a campaign's detail page:
 
-Generating an AI DM draft costs **0.25 credits**. The credit is deducted only when generation succeeds — failed generations are free.
+- **Generate Drafts (n)** in the header bulk-drafts every `pending` lead
+  (up to 100 per request — the UI batches if needed)
+- **Generate Draft** on any individual lead card drafts that single lead
 
-[IMAGE: Screenshot of a signal card with a generated draft below it, showing the edit field and action buttons]
+Each successful draft is **0.25 credits**, deducted from the workspace
+owner's balance. Failed generations are free.
+
+The campaign page polls in the background while drafts are running, so
+you'll see drafts appear card-by-card as they finish — you don't have to
+wait for the entire batch.
+
+[IMAGE: Screenshot of a campaign mid-generation showing the progress bar and drafts appearing]
 
 ## Reviewing a draft
 
-Read the draft carefully before approving. Good drafts:
+Read the draft carefully before sending. Good drafts:
 
 - Sound like something you'd actually write
-- Are relevant to the specific post (not generic)
-- Invite a response rather than close a conversation
-- Are an appropriate length
+- Reference specifics from the lead's bio or context
+- Open a conversation rather than make a hard pitch
+- Stay an appropriate length (X DMs are plain text up to 10,000 characters)
 
 ## Editing a draft
 
-Click into the draft text to edit it directly. Every edit you make is recorded and used to improve future drafts (edit-and-learn).
+Click **Edit** on any drafted lead's card to open the inline editor. The
+editor has a quick-emoji picker and a character counter. Saving updates
+the draft in place.
+
+X DMs are plain text: emojis, line breaks, and links work; bold/italic
+formatting is stripped on send.
 
 <Tip>
-  Even if a draft is 90% right, make the small edits to get it exactly right. Each edit teaches the AI something about your preferences.
+  Even if a draft is 90% right, make the small edits to get it exactly
+  right. Editing is free, and it's the easiest way to keep quality high.
 </Tip>
 
-## Approving a draft
+## Regenerating a draft
 
-Click **Approve** to send the draft to the posting queue. The queue handles the actual DM send to X.
+Click **Regenerate** on any drafted lead's card. The draft is replaced
+with a fresh attempt that uses the latest workspace ICP, tone profile,
+and campaign context.
 
-→ [How the queue works](/core/queue)
+Regenerating costs the same **0.25 credits** as the initial generation —
+each regeneration is a fresh AI call.
 
-## Rejecting a draft
+<Note>
+  If you change your **Campaign Context** mid-batch, existing drafts don't
+  update automatically. Use Regenerate on the leads you want to refresh.
+</Note>
 
-Click **Reject** to discard the draft. The signal stays with a "rejected" status and you can generate a new draft at any time.
+## Campaign context
 
-Rejecting does not cost credits — only the original 0.25-credit generation is charged.
+The **Context** button at the top of a campaign opens a 2,000-character
+guidance field. Use it to override workspace-level framing for this
+specific campaign — for example, "skip the demo offer, drop a Loom link
+instead." Context is included in every draft for this campaign going
+forward.
 
-## Regenerating with feedback
-
-If a draft misses the mark, click **Regenerate** and optionally describe what was wrong:
-
-- "Too formal"
-- "Too long, keep it to 1-2 sentences"
-- "Don't mention pricing"
-- "More empathetic, they're frustrated"
-
-The AI uses your feedback to produce a better next attempt.
-
-Regenerating costs the same **0.25 credits** as the initial generation. Each regeneration is a fresh AI call, so each one is charged.
+→ [Campaigns: campaign context](/core/campaigns)
 
 ---
 
 ## Edit-and-learn
 
-Outpulse tracks every edit you make to a draft. Over time, it identifies patterns in your corrections:
+Outpulse tracks every edit you make to a draft. Over time, the AI uses
+these patterns to improve your tone profile — consistently shorter
+sentences, removed phrases, different opening styles all feed back in.
 
-- Consistently shortening sentences
-- Removing certain phrases or words
-- Changing how you open or close a message
-- Adjusting formality
+After a few weeks of use, you'll find yourself editing less and less.
 
-These patterns automatically update your tone profile. After a few weeks of use, you'll need to edit drafts less and less.
-
-This happens passively — no configuration required.
+This happens passively. No configuration required.
 
 ---
 
 ## Draft quality checklist
 
-Before approving a draft, ask:
+Before clicking Send, ask:
 
 - [ ] Does it sound like me?
-- [ ] Is it relevant to the specific post?
-- [ ] Does it invite a response rather than close a conversation?
+- [ ] Is it specific to this lead, not generic?
+- [ ] Does it invite a response rather than close the conversation?
 - [ ] Is it the right length?
-- [ ] Is it something I'd be proud to send?
+- [ ] Would I be proud to send it?
 
 If any answer is no, edit or regenerate.

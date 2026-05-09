@@ -3,7 +3,7 @@ title: "Notifications"
 description: "Set up Slack alerts and configure when Outpulse notifies you about new signals."
 ---
 
-Outpulse can send you real-time notifications when a high-intent signal is found, so you can respond quickly without checking the inbox constantly.
+Outpulse can send you real-time notifications when a high-fit lead is discovered, so you can act on hot prospects without watching the leads page constantly.
 
 Go to **Settings → Notifications** to configure.
 
@@ -28,12 +28,10 @@ To test the connection, click **Send test notification** after saving.
 
 Each alert includes:
 
-- The monitor that found the signal
-- The original post text
+- The monitor that surfaced the lead
 - The author's X handle and follower count
-- The intent score
-- The ICP match reason
-- A direct link to the signal in your Outpulse inbox
+- The AI fit score and the reason
+- A direct link to the lead in Outpulse
 
 ### Removing a webhook
 
@@ -43,14 +41,16 @@ Clear the webhook URL field and save to stop Slack notifications.
 
 ## Alert threshold
 
-The alert threshold controls the minimum intent score required to trigger a notification. Signals below this score are still saved in your inbox but won't send an alert.
+The alert threshold controls the minimum AI fit score required to trigger a notification. Lower-scored leads are still saved on the Leads page but won't send an alert.
 
 **Default: 8**
 
-Raise this if you're getting too many Slack notifications. Lower it if you want to be alerted about more signals.
+Raise this if you're getting too many Slack notifications. Lower it if you want to be alerted about more leads.
 
 <Tip>
-  Set your alert threshold 1-2 points above your monitor's intent threshold. This way, only the highest-quality signals ping you immediately — you can review the rest in the inbox at your convenience.
+  Set your alert threshold 1-2 points above your campaign import threshold.
+  Only the strongest fits ping you immediately — you can browse the rest
+  on the Leads page at your convenience.
 </Tip>
 
 ---
@@ -59,9 +59,9 @@ Raise this if you're getting too many Slack notifications. Lower it if you want 
 
 Email digests are sent weekly with a summary of:
 
-- Signals found
-- Drafts generated and posted
-- People added
+- Leads found
+- Drafts generated and DMs sent
+- Outbound tracker activity
 - Credit usage
 
 You can't configure the email digest frequency — it's weekly. To stop receiving it, unsubscribe via the link at the bottom of the email.

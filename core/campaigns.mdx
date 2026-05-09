@@ -1,0 +1,229 @@
+---
+title: "Campaigns"
+description: "Import leads from your monitors, generate personalized DMs with AI, and send them at scale."
+---
+
+A campaign is the primary way you send DMs in Outpulse. You pick monitors as
+sources, import their leads, generate a personalized DM for each one, and
+let Outpulse send the batch at a human-like pace.
+
+[IMAGE: Screenshot of the Campaigns list showing campaign cards with status pills and progress counters]
+
+## How a campaign works
+
+<Steps>
+  <Step title="Import leads from monitors">
+    Pick one or more monitors as sources. Outpulse pulls in matching leads,
+    skipping anyone already imported into another campaign in this workspace.
+  </Step>
+  <Step title="Generate DM drafts">
+    Click **Generate Drafts** to draft a personalized DM for every pending
+    lead using Claude. Each draft uses your ICP, your tone profile, and any
+    campaign-specific context you've added.
+  </Step>
+  <Step title="Review and edit">
+    Drafts appear card-by-card as they finish. Edit, regenerate, or skip
+    individual leads before sending.
+  </Step>
+  <Step title="Send DMs">
+    Click **Send DMs** and Outpulse enqueues every drafted lead. Sends are
+    paced with human-like delays and respect your daily caps and posting
+    schedule.
+  </Step>
+</Steps>
+
+---
+
+## Creating a campaign
+
+Go to **Campaigns → New Campaign**. The form has three steps:
+
+### 1. Name your campaign
+
+A label for your reference, e.g. "SaaS founders Q2 outreach".
+
+### 2. Pick source monitors
+
+Select one or more monitors as the lead source. You'll see a per-monitor
+preview showing how many leads are importable at the current threshold and
+how many would come in if you imported everything.
+
+<Note>
+  Leads that have already been imported into any other campaign in this
+  workspace are excluded automatically — no prospect is contacted twice.
+</Note>
+
+### 3. Choose an AI score threshold
+
+If you import in **AI-curated** mode, only profiles whose AI fit score is at
+or above this threshold are pulled in. Available thresholds: 5, 6, 7, 8, 9.
+
+| Threshold | Trade-off |
+|-----------|-----------|
+| 5 | Lots of leads, more borderline fits |
+| 7 (default) | Balanced — good fit, decent volume |
+| 8–9 | Fewer leads, highest-quality fits only |
+
+### Import mode
+
+Two buttons at the bottom of the form:
+
+| Button | What it imports |
+|--------|----------------|
+| **Import all** | Every matching lead from the selected monitors, including unscored profiles |
+| **Import AI-curated** | Only leads with an AI score at or above your chosen threshold |
+
+The campaign is created in `draft` status and you're taken straight to its
+detail page.
+
+---
+
+## Campaign detail page
+
+Each campaign has a detail page that shows every imported lead as a card,
+filterable by status. From here you generate drafts, review them, and send.
+
+[IMAGE: Screenshot of a campaign detail page with the lead grid, action buttons, and status filter]
+
+### Lead statuses
+
+| Status | Meaning |
+|--------|---------|
+| `pending` | Imported, no draft yet |
+| `drafted` | AI draft generated and ready to send |
+| `sending` | Enqueued for send (label "queued" internally) |
+| `sent` | DM successfully delivered |
+| `failed` | Send failed — re-send is available |
+| `skipped` | Manually skipped or filtered out |
+
+Use the filter pills at the top of the page to view a single status.
+
+### Action buttons
+
+The campaign header has four primary actions:
+
+- **Context** — open the campaign-context modal (see below)
+- **Pause / Resume** — toggle whether the campaign continues sending
+- **Generate Drafts (n)** — bulk-draft every pending lead
+- **Send DMs (n)** — enqueue every drafted lead
+
+### Lead cards
+
+Each card shows the lead's avatar, handle, bio, follower count, AI score,
+and DM eligibility. Once a draft exists you can:
+
+- **Edit** — open a full editor with character count and emoji picker; X DMs
+  are plain text up to 10,000 characters
+- **Regenerate** — re-draft this lead with the latest context (charges 0.25
+  credits)
+- **Re-send** — retry a `failed` or stuck `queued` lead
+
+---
+
+## Campaign context
+
+The **Context** button opens a per-campaign instruction box for the AI. Use
+it to override workspace-level framing for this specific batch — for example:
+
+> "These leads are early-stage SaaS founders who tweeted about churn.
+> Emphasize retention metrics, skip the demo offer, drop a Loom link
+> instead."
+
+Up to 2,000 characters. The workspace ICP and tone profile still apply —
+campaign context only overrides them where they conflict.
+
+<Note>
+  Saving a new context doesn't re-draft existing leads. Use **Regenerate**
+  on individual leads (or delete drafts and re-run **Generate Drafts**) to
+  refresh them with the new context.
+</Note>
+
+---
+
+## Drafting
+
+### Bulk generate
+
+Click **Generate Drafts (n)** to draft every `pending` lead in one batch
+(up to 100 per request — the UI batches if needed). Each successful draft
+charges **0.25 credits** to the workspace owner.
+
+The page polls quietly in the background, so drafts appear card-by-card as
+they finish — you don't have to wait for the entire batch.
+
+### Single-lead generate / regenerate
+
+On any card, click **Generate Draft** (if pending) or **Regenerate** (if
+already drafted). Regeneration also costs 0.25 credits and replaces the
+existing draft.
+
+### Editing
+
+Click **Edit** on any drafted lead to open the inline editor. The editor
+includes a quick-emoji picker and character counter. X DMs are plain text:
+emojis, line breaks, and links work; bold/italic formatting is stripped on
+send.
+
+---
+
+## Sending
+
+When you're satisfied with the drafts, click **Send DMs (n)** in the header.
+
+What happens:
+
+1. Outpulse creates a `QueuedAction` for each `drafted` lead, scheduled with
+   a cumulative human-like delay so the batch is paced naturally
+2. The campaign flips to `active` status
+3. The per-workspace queue worker picks up each row when its scheduled time
+   arrives, applies daily caps and schedule rules, then sends via the X API
+4. **5 credits** are deducted on each successful send
+
+Re-clicking **Send DMs** is safe — it skips leads that already have a
+queued action attached (idempotent).
+
+### Re-sending a failed lead
+
+If a lead lands in `failed` status, click **Re-send** on its card. The send
+is re-enqueued with a fresh `QueuedAction`.
+
+---
+
+## Pausing and resuming
+
+Click **Pause** in the header to flip the campaign to `paused`. Already-queued
+sends will still go out (they're independent rows on the workspace queue)
+but no new sends will be enqueued from this campaign until you **Resume**.
+
+Use this if you spot an issue mid-send and want to stop the bleeding while
+you investigate.
+
+---
+
+## Deleting a campaign
+
+From the campaigns list, click the trash icon on any card. Deleting removes
+the campaign, its `CampaignLead` rows, and any unsent drafts. **DMs that
+have already been sent are not affected** — they stay in your Outbound
+Tracker.
+
+<Warning>
+  Deleting a campaign permanently removes all its drafts. There's no
+  recovery. If you want to stop sending without losing drafts, **Pause** the
+  campaign instead.
+</Warning>
+
+---
+
+## Cost summary
+
+| Action | Cost |
+|--------|------|
+| Importing leads from monitors | Free |
+| Generating a DM draft | 0.25 credits |
+| Regenerating a draft | 0.25 credits |
+| Sending a DM (on success) | 5 credits |
+
+Failed drafts and failed sends do not consume credits.
+
+→ [Full credit cost breakdown](/credits/credit-costs)
